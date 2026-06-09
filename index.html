@@ -267,6 +267,12 @@ section{padding:6rem 2rem;}
 .si-dot:hover .si-label{opacity:1;}
 
 
+/* SECTION BANNER */
+.sec-banner{position:sticky;top:64px;z-index:50;background:rgba(67,67,67,0.95);backdrop-filter:blur(8px);padding:0.5rem 2rem;display:flex;align-items:center;gap:0.75rem;}
+.sec-banner-label{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--salmon);}
+.sec-banner-title{font-size:0.78rem;color:rgba(255,255,255,0.6);font-family:'Merriweather',serif;font-style:italic;}
+.sec-banner-sep{color:rgba(255,255,255,0.2);}
+
 /* BACK TO TOP */
 .back-top{position:fixed;bottom:2rem;right:1.5rem;z-index:150;width:42px;height:42px;background:var(--dark);border:1px solid rgba(246,201,182,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(10px);transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
 .back-top.visible{opacity:1;transform:translateY(0);}
@@ -382,6 +388,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 </section>
 
 <!-- WHAT IS TRIPTOLD -->
+<div class="sec-banner"><span class="sec-banner-label">What is Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">The right creator changes everything</span></div>
 <section class="what" id="what">
   <div class="inner">
     <div class="what-grid">
@@ -427,6 +434,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 </div>
 
 <!-- WHY DIFFERENT -->
+<div class="sec-banner"><span class="sec-banner-label">Why Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Not a database. Not an agency.</span></div>
 <section class="different" id="different" style="background:var(--dark);position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:url('t_iceland.jpg') center/cover no-repeat;opacity:0.08;pointer-events:none;"></div>
   <div class="inner" style="position:relative;z-index:2;">
     <div class="reveal">
@@ -480,12 +488,15 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 <!-- WHY WE BUILT THIS -->
 <section style="background:var(--white);padding:0;" id="story">
   <div style="display:grid;grid-template-columns:1fr 1fr;min-height:600px;">
-    <div style="background:var(--dark);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
-      <div class="sec-eyebrow sec-eyebrow-light" style="margin-bottom:1.5rem;">Why we built this</div>
-      <blockquote style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);line-height:1.3;margin:0;">
-        "The problem is not lack of content.<br><em style="color:var(--salmon);">It is lack of meaning.</em>"
-      </blockquote>
-      <p style="font-size:0.88rem;color:#A0A8B0;margin-top:2rem;line-height:1.7;">Triptold exists because the right storyteller can make somebody feel a place before they get there. We want to put trust back into the marketing mix.</p>
+    <div style="position:relative;overflow:hidden;min-height:500px;">
+      <img src="t_verandah.jpg" alt="A place worth telling stories about" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(67,67,67,0.75) 0%,rgba(67,67,67,0.3) 100%);"></div>
+      <div style="position:relative;z-index:2;padding:4rem 3.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;" class="reveal">
+        <div class="sec-eyebrow" style="color:var(--salmon);margin-bottom:1rem;">Why we built this</div>
+        <blockquote style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.5vw,2.1rem);color:var(--white);line-height:1.35;margin:0;">
+          "The problem is not lack of content.<br><em style="color:var(--salmon);">It is lack of meaning.</em>"
+        </blockquote>
+      </div>
     </div>
     <div style="background:var(--light);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
       <p style="font-size:1rem;color:var(--dark);line-height:1.85;margin-bottom:1.4rem;">Travel decisions carry enormous emotional weight. People invest time, money, hope and memory into experiences they cannot get back.</p>
@@ -497,11 +508,12 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 </section>
 
 <!-- FOR BRANDS -->
+<div class="sec-banner"><span class="sec-banner-label">For travel brands</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Reach the people already looking for you</span></div>
 <section class="audience-section" id="brands" style="background:var(--white);">
   <div class="inner">
-    <div class="audience-grid">
-      <div class="audience-img reveal">
-        <img src="t_brands.jpg" alt="Boutique travel brand">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:stretch;">
+      <div style="border-radius:2px;overflow:hidden;min-height:500px;" class="reveal">
+        <img src="t_brands.jpg" alt="Boutique travel" style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
       <div class="reveal">
         <div class="sec-eyebrow">For travel brands and hotels</div>
@@ -539,11 +551,12 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 </section>
 
 <!-- FOR CREATORS -->
+<div class="sec-banner"><span class="sec-banner-label">For creators</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Partnerships that fit. Pay that is fair.</span></div>
 <section class="audience-section" id="creators" style="background:var(--salmon-l);">
   <div class="inner">
-    <div class="audience-grid flip">
-      <div class="audience-img reveal">
-        <img src="t_creators.jpg" alt="Travel storytelling">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:stretch;">
+      <div style="border-radius:2px;overflow:hidden;min-height:500px;" class="reveal">
+        <img src="t_creators.jpg" alt="Travel storytelling" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
       </div>
       <div class="reveal">
         <div class="sec-eyebrow">For creators and storytellers</div>
@@ -572,37 +585,40 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 
         <a href="#interest" class="btn btn-dark" style="margin-bottom:0;">Apply to join the network</a>
       </div>
-          <div class="creator-example-header">
-            <div class="creator-example-label">Founding creator spotlight</div>
-            <div class="creator-example-badge">Triptold Founding Creator</div>
-          </div>
-          <div class="creator-example-body">
-            <div class="creator-example-img">
-              <img src="t_alice.jpg" alt="Alice Marsh">
-              <div class="creator-triptold-mark">Triptold</div>
-            </div>
-            <div class="creator-example-content">
-              <div class="creator-example-name">Alice Marsh</div>
-              <div class="creator-example-role">Personal stylist, London &nbsp;·&nbsp; <a href="https://www.instagram.com/alice_inthe_looking_glass/" target="_blank">@alice_inthe_looking_glass</a></div>
-              <div class="creator-insight">"Not: does Alice post about travel? But: what audience already trusts her taste enough to follow her somewhere new? They would never search luxury lodges Shropshire. They would absolutely stop scrolling for: Alice in good knitwear, morning coffee, lake in background."</div>
-              <p style="font-size:0.85rem;color:var(--muted);line-height:1.65;margin-bottom:0.8rem;">Alice's audience of women 40 to 55 follows her because she makes them feel visible, stylish and genuinely themselves again. They trust her taste completely. A girls weekend at a beautiful property: champagne on arrival, golden hour, slow mornings. That is exactly what she would choose. And exactly what her audience would book.</p>
-              <div class="creator-tags">
-                <span class="creator-tag-pill">Style confidence</span>
-                <span class="creator-tag-pill">Midlife women</span>
-                <span class="creator-tag-pill">Hospitality</span>
-                <span class="creator-tag-pill">London-based</span>
-                <span class="creator-tag-pill">Not an obvious travel creator</span>
-              </div>
-            </div>
-          </div>
-</div>
+    </div>
+  </div>
+</section>
+
+<!-- ALICE SPOTLIGHT -->
+<section style="background:var(--white);padding:0;" id="alice">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:520px;">
+    <div style="position:relative;overflow:hidden;">
+      <img src="t_alice.jpg" alt="Alice Marsh" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;min-height:520px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(67,67,67,0.4) 100%);"></div>
+      <div style="position:absolute;bottom:1.5rem;left:1.5rem;background:var(--salmon);color:var(--dark);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:2px;">Triptold Founding Creator</div>
+    </div>
+    <div style="background:var(--light);padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
+      <div class="sec-eyebrow" style="margin-bottom:1rem;">Founding creator spotlight</div>
+      <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1.5rem;color:var(--dark);margin-bottom:0.3rem;">Alice Marsh</div>
+      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem;">Personal stylist, London &nbsp;·&nbsp; <a href="https://www.instagram.com/alice_inthe_looking_glass/" target="_blank" style="color:var(--salmon-d);text-decoration:none;">@alice_inthe_looking_glass</a></div>
+      <blockquote style="border-left:3px solid var(--salmon-d);padding:0.8rem 1.1rem;font-style:italic;font-size:0.95rem;color:var(--dark);line-height:1.7;background:var(--white);margin-bottom:1.2rem;">"Not: does Alice post about travel? But: what audience already trusts her taste enough to follow her somewhere new?"</blockquote>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;">Alice's audience of women 40 to 55 follows her because she makes them feel visible and genuinely themselves again. They trust her taste completely. A girls weekend at a beautiful property: champagne on arrival, golden hour, slow mornings. That is exactly what she would choose. And exactly what her audience would book.</p>
+      <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+        <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:2px;">Style and confidence</span>
+        <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:2px;">Midlife women</span>
+        <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:2px;">Not an obvious travel creator</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FOR TRAVELLERS -->
+<div class="sec-banner"><span class="sec-banner-label">For travellers</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Discover places through people you trust</span></div>
 <section class="audience-section" id="travellers" style="background:var(--white);">
   <div class="inner">
-    <div class="audience-grid">
-      <div class="audience-img reveal">
-        <img src="t_travellers.jpg" alt="Family travel">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:stretch;">
+      <div style="border-radius:2px;overflow:hidden;min-height:500px;" class="reveal">
+        <img src="t_pier.jpg" alt="Family travel" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;">
       </div>
       <div class="reveal">
         <div class="sec-eyebrow">For travellers</div>
@@ -735,57 +751,53 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
       <p class="sec-body sec-body-light" style="max-width:620px;margin-top:0.5rem;">Triptold is a platform business built on a simple belief: the right storyteller changes everything. We combine editorial intelligence with technology to connect boutique travel brands with the creators their guests already trust. We are currently raising our seed round. HMRC Advance Assurance is secured.</p>
     </div>
 
-    <div class="investment-grid reveal">
-      <div>
-        <div class="inv-card">
-          <div class="inv-card-title">Where we are</div>
-          <div class="inv-row"><span class="inv-label">Platform status</span><span class="inv-value">Live and in use</span></div>
-          <div class="inv-row"><span class="inv-label">Community assets</span><span class="inv-value">Already built</span></div>
-          <div class="inv-row"><span class="inv-label">SEIS status</span><span class="inv-value">Advance Assurance secured</span></div>
-          <div class="inv-row"><span class="inv-label">Raise status</span><span class="inv-value">Currently open</span></div>
-          <div class="inv-row"><span class="inv-label">Value horizon</span><span class="inv-value">3 to 5 years</span></div>
-          <div class="seis-badge">&#10003;&nbsp; SEIS eligible: Advance Assurance from HMRC</div>
-        </div>
-        <div class="seis-explainer">
-          <div class="seis-explainer-title">What SEIS means for you</div>
-          <div class="seis-explainer-body">Under SEIS, UK taxpayers can claim 50% income tax relief on qualifying investments. If the company grows and you exit, qualifying gains are also exempt from Capital Gains Tax. Triptold has secured Advance Assurance from HMRC, which means this relief is available to qualifying investors now. Request the full deck for details.</div>
-        </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;" class="reveal">
+      <div style="display:flex;flex-direction:column;gap:1.4rem;">
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">Already exists. Not a concept.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Platform live. Real community assets built over a decade. Seed funding into a working business.</div></div></div>
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">Platform economics, not agency economics.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Recurring membership revenue plus booking commissions. Compounds as the network grows.</div></div></div>
       </div>
-
-      <div class="inv-why">
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <div>
-            <div class="why-title">Already exists. Not a concept.</div>
-            <div class="why-body">Platform live. Real community assets. Early brand conversations underway. Seed funding into a working business.</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <div>
-            <div class="why-title">Platform economics, not agency economics.</div>
-            <div class="why-body">Recurring membership revenue plus booking commissions. Compounds as the network grows.</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <div>
-            <div class="why-title">A moat that can only be built by running it.</div>
-            <div class="why-body">Every match and booking is logged. That editorial intelligence cannot be replicated from scratch.</div>
-          </div>
-        </div>
-        <div class="why-item">
-          <div class="why-dot"></div>
-          <div>
-            <div class="why-title">The timing is right.</div>
-            <div class="why-body">Trust is the scarce resource in travel discovery. Triptold is built precisely for this moment.</div>
-          </div>
-        </div>
-        <a href="#interest" class="btn btn-primary" style="margin-top:0.5rem;display:inline-block;">Request the investor deck</a>
+      <div style="display:flex;flex-direction:column;gap:1.4rem;">
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">A moat that can only be built by running it.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Every match and booking logged. That editorial intelligence cannot be replicated from scratch.</div></div></div>
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">The timing is right.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Trust is the scarce resource in travel discovery. Triptold is built precisely for this moment.</div></div></div>
       </div>
+    </div>
+    <div style="margin-top:2rem;" class="reveal">
+      <div style="background:rgba(46,112,96,0.15);border:1px solid rgba(46,112,96,0.3);border-radius:2px;padding:1rem 1.4rem;margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.6rem;">
+        <span style="color:#7BC4A8;font-size:0.9rem;">&#10003;</span>
+        <span style="font-size:0.85rem;color:#A0A8B0;">SEIS eligible: HMRC Advance Assurance secured. 50% income tax relief for qualifying UK investors.</span>
+      </div><br>
+      <a href="#interest" class="btn btn-primary">Request the investor deck</a>
     </div>
   </div>
 </section>
+
+<!-- PHOTO STRIP -->
+<div style="background:var(--dark);padding:2rem 0;overflow:hidden;">
+  <div style="display:flex;gap:4px;align-items:stretch;height:260px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:0 2rem;">
+    <div style="flex:0 0 380px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_travellers.jpg" alt="Family travel" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_verandah.jpg" alt="Verandah" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="flex:0 0 320px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_tuk.jpg" alt="Tuk-tuk" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="flex:0 0 380px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_room.jpg" alt="Boutique hotel" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_creators.jpg" alt="Travel storytelling" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="flex:0 0 380px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_founders.jpg" alt="Susie and Kirsty" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+    <div style="flex:0 0 320px;overflow:hidden;border-radius:2px;scroll-snap-align:start;">
+      <img src="t_iceland.jpg" alt="Travel discovery" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:1.2rem;font-size:0.7rem;color:#505860;letter-spacing:0.12em;text-transform:uppercase;">A trip well told is a journey somebody else wants to take</div>
+</div>
 
 <!-- SOCIAL -->
 <section class="social-section" id="social">
@@ -862,7 +874,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
       <h2 class="sec-title" style="text-align:center;">Tell us who you are.<br>We will take it from there.</h2>
       <p class="sec-body" style="text-align:center;margin:0 auto;max-width:520px;">Whether you are a brand, a creator, an investor, or a traveller who wants early access, we would love to hear from you. We read every submission personally and reply within two working days.</p>
       <div class="share-nudge reveal" style="max-width:640px;margin:1.5rem auto 0;">
-        <div class="share-nudge-text"><strong>Not for you but know someone it is?</strong>Share the link with a brand, creator or investor who should see this.</div>
+        <div class="share-nudge-text"><strong>Not for you but know someone it is for?</strong>Share the link with a brand, creator or investor who should see this.</div>
         <button class="share-btn" onclick="shareLink()">Copy link</button>
       </div>
     </div>
