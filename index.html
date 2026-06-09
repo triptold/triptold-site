@@ -30,8 +30,7 @@ body{font-family:'Lato',sans-serif;color:var(--dark);background:var(--white);ove
 .nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(67,67,67,0.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(182,189,192,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;}
 .nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
 .nav-logo img{height:34px;width:34px;object-fit:contain;}
-.nav-wordmark{font-family:'Merriweather',serif;font-style:italic;font-size:1.1rem;color:var(--salmon);display:block;line-height:1.1;}
-.nav-strapline{font-size:0.58rem;color:rgba(255,255,255,0.3);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-top:2px;max-width:200px;}
+.nav-wordmark{font-family:'Merriweather',serif;font-style:italic;font-size:1.1rem;color:var(--salmon);}
 .nav-links{display:flex;align-items:center;gap:0.1rem;}
 .nav-links a{color:#A0A8B0;text-decoration:none;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 0.85rem;transition:color 0.2s;}
 .nav-links a:hover{color:var(--white);}
@@ -76,10 +75,10 @@ body{font-family:'Lato',sans-serif;color:var(--dark);background:var(--white);ove
 @keyframes pulseScroll{0%,100%{opacity:0.4;}50%{opacity:0.8;}}
 
 /* SECTIONS */
-section{padding:5.5rem 2rem;}
+section{padding:6rem 2rem;}
 .inner{max-width:1080px;margin:0 auto;}
 .sec-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--salmon-d);margin-bottom:0.7rem;}
-.sec-title{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--dark);line-height:1.25;margin-bottom:1rem;}
+.sec-title{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--dark);line-height:1.2;margin-bottom:1rem;}
 .sec-body{font-size:0.97rem;color:var(--muted);line-height:1.82;}
 .sec-title-white{color:var(--white);}
 .sec-eyebrow-light{color:var(--salmon);}
@@ -113,22 +112,22 @@ section{padding:5.5rem 2rem;}
 .diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;}
 .diff-item{background:#3A3A3A;padding:2rem 1.8rem;transition:background 0.2s;}
 .diff-item:hover{background:#424242;}
-.diff-num{font-family:'Merriweather',serif;font-style:italic;font-size:2.2rem;font-weight:300;color:rgba(246,201,182,0.2);line-height:1;margin-bottom:1rem;}
-.diff-title{font-family:'Merriweather',serif;font-style:italic;font-size:1.05rem;color:var(--white);margin-bottom:0.6rem;}
+.diff-num{font-family:'Merriweather',serif;font-style:italic;font-size:3.5rem;font-weight:300;color:rgba(246,201,182,0.15);line-height:0.85;margin-bottom:0.8rem;}
+.diff-title{font-family:'Merriweather',serif;font-style:italic;font-size:1.1rem;color:var(--white);margin-bottom:0.7rem;line-height:1.25;}
 .diff-body{font-size:0.87rem;color:#A0A8B0;line-height:1.72;}
 
 /* PHOTO BREAK */
 .photo-break{height:400px;background:url('t_lantern.jpg') center 60%/cover;position:relative;}
 .photo-break-overlay{position:absolute;inset:0;background:rgba(67,67,67,0.5);display:flex;align-items:center;justify-content:center;}
-.photo-break-quote{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.8vw,2rem);color:var(--white);text-align:center;max-width:700px;padding:0 2rem;line-height:1.55;}
+.photo-break-quote{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--white);text-align:center;max-width:800px;padding:0 2rem;line-height:1.45;}
 .photo-break-quote em{color:var(--salmon);}
 
 /* AUDIENCE SECTIONS */
-.audience-section{padding:5.5rem 2rem;}
+.audience-section{padding:6rem 2rem;}
 .audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
 .audience-grid.flip .audience-img{order:2;}
 .audience-grid.flip .audience-text{order:1;}
-.audience-img{border-radius:2px;overflow:hidden;aspect-ratio:3/4;}
+.audience-img{border-radius:2px;overflow:hidden;aspect-ratio:3/4;position:relative;}
 .audience-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
 .audience-img:hover img{transform:scale(1.03);}
 .problem-box{background:var(--light);border-left:3px solid var(--border);padding:1.2rem 1.4rem;margin:1.5rem 0;border-radius:0 2px 2px 0;}
@@ -209,9 +208,9 @@ section{padding:5.5rem 2rem;}
 .creator-example-header{background:var(--dark);padding:1.2rem 1.8rem;display:flex;align-items:center;justify-content:space-between;}
 .creator-example-label{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--salmon);}
 .creator-example-badge{background:var(--salmon);color:var(--dark);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px;}
-.creator-example-body{display:grid;grid-template-columns:180px 1fr;gap:0;}
+.creator-example-body{display:grid;grid-template-columns:200px 1fr;gap:0;}
 .creator-example-img{position:relative;}
-.creator-example-img img{width:180px;height:220px;object-fit:cover;object-position:center 15%;display:block;}
+.creator-example-img img{width:200px;height:280px;object-fit:cover;object-position:center 15%;display:block;}
 .creator-triptold-mark{position:absolute;bottom:0.7rem;left:0.7rem;background:var(--salmon);color:var(--dark);font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.25rem 0.5rem;border-radius:2px;display:flex;align-items:center;gap:0.3rem;}
 .creator-triptold-mark::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--dark);display:inline-block;}
 .creator-example-content{padding:1.5rem 1.8rem;}
@@ -308,6 +307,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
   .nav-links{display:none;}
   .hamburger{display:flex;}
   .what-grid,.audience-grid,.investment-grid,.pilot-banner-inner{grid-template-columns:1fr;gap:2.5rem;}
+  #story>div{grid-template-columns:1fr;}
   .audience-grid.flip .audience-img,.audience-grid.flip .audience-text{order:unset;}
   .diff-grid{grid-template-columns:1fr;}
   .pilot-stats{flex-wrap:wrap;gap:1.5rem;}
@@ -321,6 +321,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 }
 @media(max-width:600px){
   section,.audience-section,.social-section{padding:4rem 1.25rem;}
+  #story>div>div{padding:3.5rem 1.5rem;}
   .pilot-banner{padding:3rem 1.25rem;}
   .social-grid{grid-template-columns:1fr;}
   .sec-banner{display:none;}
@@ -333,10 +334,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 <nav class="nav">
   <a href="#" class="nav-logo">
     <img src="t_logo_white.png" alt="Triptold">
-    <div>
-      <span class="nav-wordmark">Triptold</span>
-      <span class="nav-strapline">A trip well told is a journey somebody else wants to take</span>
-    </div>
+    <span class="nav-wordmark">Triptold</span>
   </a>
   <div class="nav-links">
     <a href="#brands">For brands</a>
@@ -357,6 +355,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
   <div class="si-dot" onclick="scrollToSection('story')" data-section="story"><span class="si-label">Why we built this</span></div>
   <div class="si-dot" onclick="scrollToSection('brands')" data-section="brands"><span class="si-label">For brands</span></div>
   <div class="si-dot" onclick="scrollToSection('creators')" data-section="creators"><span class="si-label">For creators</span></div>
+  <div class="si-dot" onclick="scrollToSection('alice')" data-section="alice"><span class="si-label">Creator spotlight</span></div>
   <div class="si-dot" onclick="scrollToSection('travellers')" data-section="travellers"><span class="si-label">For travellers</span></div>
   <div class="si-dot" onclick="scrollToSection('team')" data-section="team"><span class="si-label">The team</span></div>
   <div class="si-dot" onclick="scrollToSection('invest')" data-section="invest"><span class="si-label">Investors</span></div>
@@ -414,32 +413,31 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 </section>
 
 <!-- PILOT BANNER -->
-<div class="pilot-banner">
-  <div class="pilot-banner-inner reveal">
-    <div>
-      <div class="sec-eyebrow sec-eyebrow-light">Founding network</div>
+<div style="background:var(--dark);padding:4rem 2rem;">
+  <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap;" class="reveal">
+    <div style="flex:1;min-width:280px;">
+      <div class="sec-eyebrow sec-eyebrow-light" style="margin-bottom:1rem;">Applications open now</div>
       <div class="pilot-title">We are not open yet. <em>That is the point.</em></div>
-      <p class="pilot-body">Triptold launches publicly in January 2027. Until then, we are building a small, invitation-only founding network of brands, creators, and investors who want to help shape what this becomes. The pilot runs from Autumn 2026. Founding members get priority access, founding rates, and the kind of attention we can only give when we are deliberately small.</p>
-      <div class="pilot-stats">
-        <div><div class="pilot-stat-n">Jan 2027</div><div class="pilot-stat-l">Public launch</div></div>
-        <div><div class="pilot-stat-n">Autumn 2026</div><div class="pilot-stat-l">Pilot begins</div></div>
-        <div><div class="pilot-stat-n">35,000+</div><div class="pilot-stat-l">Community already built</div></div>
-        <div><div class="pilot-stat-n">SEIS</div><div class="pilot-stat-l">Advance assurance secured</div></div>
-      </div>
+      <p style="font-size:0.95rem;color:#A0A8B0;line-height:1.75;margin-top:0.8rem;max-width:520px;">We launch publicly in January 2027. Until then we are choosing our founding brands and creators carefully. When we are deliberately small, we can be genuinely good.</p>
     </div>
-    <div class="pilot-cta-box">
-      <div class="pilot-cta-label">Pilot places are limited</div>
-      <div class="pilot-launch">January<br>2027</div>
-      <div class="pilot-launch-sub">Open for applications now</div>
-      <a href="#interest" class="btn btn-primary" style="width:100%;text-align:center;">Apply now</a>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+      <div style="text-align:center;padding:1rem 1.5rem;border:1px solid rgba(246,201,182,0.2);border-radius:2px;">
+        <div class="pilot-stat-n">Autumn 2026</div>
+        <div class="pilot-stat-l">Pilot begins</div>
+      </div>
+      <div style="text-align:center;padding:1rem 1.5rem;border:1px solid rgba(246,201,182,0.2);border-radius:2px;">
+        <div class="pilot-stat-n">Jan 2027</div>
+        <div class="pilot-stat-l">Public launch</div>
+      </div>
+      <a href="#interest" class="btn btn-primary" style="white-space:nowrap;">Apply for the pilot</a>
     </div>
   </div>
 </div>
 
 <!-- WHY DIFFERENT -->
-<section class="different" id="different">
+<section class="different" id="different" style="background:var(--dark);position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:url('t_iceland.jpg') center/cover no-repeat;opacity:0.08;pointer-events:none;"></div>
   <div class="sec-banner"><span class="sec-banner-label">Why Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Not a database. Not an agency.</span></div>
-  <div class="inner">
+  <div class="inner" style="position:relative;z-index:2;">
     <div class="reveal">
       <h2 class="sec-title sec-title-white">Not a database. Not an agency. Something built differently.</h2>
       <p class="sec-body sec-body-light" style="max-width:600px;">Most platforms optimise for scale. We optimise for trust. Here is what that means in practice.</p>
@@ -489,16 +487,20 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 </div>
 
 <!-- WHY WE BUILT THIS -->
-<section style="background:var(--light);padding:5.5rem 2rem;" id="story">
-  <div class="inner">
-    <div style="max-width:720px;margin:0 auto;" class="reveal">
-      <div class="sec-eyebrow" style="text-align:center;">Why we built this</div>
-      <h2 class="sec-title" style="text-align:center;margin-bottom:2rem;">Travel has become strangely empty.</h2>
-      <p class="sec-body" style="margin-bottom:1.4rem;">Thousands of beautiful videos, perfect drone shots and hidden gems. Yet people still arrive disappointed because the story did not match the reality. Travel decisions carry enormous emotional weight. People are investing time, money, hope and memory into experiences they cannot get back.</p>
-      <p class="sec-body" style="margin-bottom:1.4rem;">A bad jumper is annoying. A bad holiday can become a lost anniversary, wasted savings, stress with your children, or precious time you cannot get back. People are not buying travel logically. They are buying anticipation, identity, connection, rest and escape. The stories shaping those decisions matter enormously.</p>
-      <p class="sec-body" style="margin-bottom:2rem;">We also think people are starting to feel the disconnect. Much of modern travel content is driven by incentives that have little to do with genuine experience. Follower counts can be inflated, audiences can be passive, and popularity is not the same thing as trust.</p>
-      <div class="pull-quote" style="max-width:680px;margin:0 auto 2rem;">"The problem is not lack of content. It is lack of meaning. Triptold exists because the right storyteller can make somebody feel a place before they get there. We want to put trust back into the marketing mix."</div>
-      <p class="sec-body" style="text-align:center;color:var(--dark);">That is what we are building. Deliberately, carefully, and with the right people from the start.</p>
+<section style="background:var(--white);padding:0;" id="story">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:600px;">
+    <div style="background:var(--dark);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
+      <div class="sec-eyebrow sec-eyebrow-light" style="margin-bottom:1.5rem;">Why we built this</div>
+      <blockquote style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);line-height:1.3;margin:0;">
+        "The problem is not lack of content.<br><em style="color:var(--salmon);">It is lack of meaning.</em>"
+      </blockquote>
+      <p style="font-size:0.88rem;color:#A0A8B0;margin-top:2rem;line-height:1.7;">Triptold exists because the right storyteller can make somebody feel a place before they get there. We want to put trust back into the marketing mix.</p>
+    </div>
+    <div style="background:var(--light);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
+      <p style="font-size:1rem;color:var(--dark);line-height:1.85;margin-bottom:1.4rem;">Travel decisions carry enormous emotional weight. People invest time, money, hope and memory into experiences they cannot get back.</p>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.4rem;">A bad jumper is annoying. A bad holiday can become a lost anniversary, wasted savings, or precious time you cannot get back. People are not buying travel logically. They are buying anticipation, identity, connection and escape.</p>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;">Much of modern travel content is driven by incentives that have little to do with genuine experience. Popularity is not the same thing as trust.</p>
+      <p style="font-size:0.9rem;font-weight:700;color:var(--dark);letter-spacing:0.01em;">That is what we are building. Deliberately, carefully, and with the right people from the start.</p>
     </div>
   </div>
 </section>
@@ -513,84 +515,34 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
       </div>
       <div class="reveal">
         <div class="sec-eyebrow">For travel brands and hotels</div>
-        <h2 class="sec-title">You have something genuinely special. The wrong audience has never found it.</h2>
+        <h2 class="sec-title">You have something genuinely special.<br>The right audience is waiting.</h2>
+        <p class="sec-body" style="margin-bottom:2.5rem;">Stop paying for reach. Start paying for fit. Triptold connects your property with creators whose audiences already trust the kind of experience you offer.</p>
 
-        <div class="problem-box">
-          <div class="problem-label">The problem</div>
-          <div class="problem-text">You have tried creator platforms. You paid too much for someone with the wrong audience. The content felt off-brand. You spent weeks managing contracts and briefing yourself. And when it was done, you had no idea whether it drove a single booking.</div>
-        </div>
-
-        <div class="solution-box">
-          <div class="solution-label">What Triptold does differently</div>
-          <div class="solution-text">Work with vetted creators whose audiences already match your ideal guests. Real travel experiences turned into campaigns that increase bookings, strengthen brand trust, and generate measurable results. We handle everything from brief to reporting. You focus on your guests.</div>
-        </div>
-
-        <div class="points">
-          <div class="point">
-            <div class="point-dot"></div>
-            <div>
-              <div class="point-title">A proper brief process, not a search bar</div>
-              <div class="point-body">Tell us what makes your property different, who your ideal guest is, and what would feel wrong. We do the matching. You get a shortlist of 5 to 8 creators with written reasoning for each one.</div>
-            </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2rem;">
+          <div style="background:var(--light);border-radius:2px;padding:1.4rem;border-top:3px solid var(--salmon);">
+            <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.5rem;">The right match</div>
+            <div style="font-size:0.85rem;color:var(--muted);line-height:1.65;">A shortlist of creators chosen for fit, not follower count. Each with written editorial reasoning explaining exactly why they suit your property.</div>
           </div>
-          <div class="point">
-            <div class="point-dot"></div>
-            <div>
-              <div class="point-title">Fully managed end-to-end</div>
-              <div class="point-body">Contracts, compliance, briefing, content review, disclosure requirements, and reporting are all handled by Triptold. Agency-quality support at a fraction of agency costs.</div>
-            </div>
+          <div style="background:var(--light);border-radius:2px;padding:1.4rem;border-top:3px solid var(--salmon);">
+            <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.5rem;">Fully managed</div>
+            <div style="font-size:0.85rem;color:var(--muted);line-height:1.65;">Brief, contracts, compliance, content, reporting. Everything handled. You focus on your guests.</div>
           </div>
-          <div class="point">
-            <div class="point-dot"></div>
-            <div>
-              <div class="point-title">Bookings you can trace back to a story</div>
-              <div class="point-body">Every collaboration includes a tracked booking link that keeps earning for you long after you post. Because travel decisions take time, and Triptold measures them properly.</div>
-            </div>
+          <div style="background:var(--light);border-radius:2px;padding:1.4rem;border-top:3px solid var(--salmon);">
+            <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.5rem;">Bookings measured</div>
+            <div style="font-size:0.85rem;color:var(--muted);line-height:1.65;">Connect creator content directly to real stays. You stop guessing whether it worked.</div>
           </div>
         </div>
 
-        <div class="pricing-strip">
-          <div class="pricing-strip-label">How it works financially</div>
-          <div class="price-row">
-            <div><div class="price-name">Network membership</div><div class="price-desc">Monthly access to the network, editorial briefs, and creator matching</div></div>
-            <div class="price-val">On application</div>
-          </div>
-          <div class="price-row">
-            <div><div class="price-name">Managed collaboration</div><div class="price-desc">Full service campaign from brief to delivery, creator fee included</div></div>
-            <div class="price-val">On application</div>
-          </div>
-          <div class="price-row">
-            <div><div class="price-name">Performance layer</div><div class="price-desc">Optional. Commission-based when bookings are attributed to creator content</div></div>
-            <div class="price-val">On application</div>
+        <div style="background:var(--dark);border-radius:2px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1rem;">Founding brands also get</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;">
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Featured in the podcast launch series</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>First access to the full creator network</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Founding rates locked for two years</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Named as a founding brand on the platform</div>
           </div>
         </div>
-
-        <div class="founding-benefits">
-          <div class="founding-benefits-title">What founding brands get</div>
-          <div class="benefit-row">
-            <div class="benefit-check">&#10003;</div>
-            <div><div class="benefit-title">Featured on the Stories That Travel podcast launch series</div><div class="benefit-body">Your property is part of the first season. That is a permanent piece of editorial content associated with your brand from day one.</div></div>
-          </div>
-          <div class="benefit-row">
-            <div class="benefit-check">&#10003;</div>
-            <div><div class="benefit-title">Named as a founding brand on the Triptold platform</div><div class="benefit-body">Permanent founding member status on the site. Recognised as a brand that was here before the doors opened.</div></div>
-          </div>
-          <div class="benefit-row">
-            <div class="benefit-check">&#10003;</div>
-            <div><div class="benefit-title">First access to the full creator network before public launch</div><div class="benefit-body">You choose from the founding creator pool before any other brand sees them. The best matches go to the people who moved first.</div></div>
-          </div>
-          <div class="benefit-row">
-            <div class="benefit-check">&#10003;</div>
-            <div><div class="benefit-title">Founding rates locked for two years</div><div class="benefit-body">Membership and collaboration pricing agreed at founding rates. As the network grows and demand increases, your rate does not change.</div></div>
-          </div>
-          <div class="benefit-row">
-            <div class="benefit-check">&#10003;</div>
-            <div><div class="benefit-title">Direct input into how the platform develops</div><div class="benefit-body">We are building this with our founding brands, not at them. Your feedback shapes what Triptold becomes.</div></div>
-          </div>
-        </div>
-        <div style="margin-top:1.2rem;">
-          <a href="#interest" class="btn btn-primary">Apply for a founding brand place</a>
-        </div>
+        <a href="#interest" class="btn btn-primary">Apply for a founding brand place</a>
       </div>
     </div>
   </div>
@@ -606,91 +558,31 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
       </div>
       <div class="reveal">
         <div class="sec-eyebrow">For creators and storytellers</div>
-        <h2 class="sec-title">Get brand partnerships that fit your audience. And get paid properly for them.</h2>
+        <h2 class="sec-title">Partnerships that genuinely fit.<br>Pay that is fair from the start.</h2>
+        <p class="sec-body" style="margin-bottom:2rem;">You do not need to be a travel creator. If your audience trusts your taste, Triptold finds you the right match.</p>
 
-        <div class="problem-box">
-          <div class="problem-label">The problem</div>
-          <div class="problem-text">You get approached by brands that feel wrong. When you say yes, you are underpaid, given a vague brief, and left to manage contracts yourself. Travel brand deals are especially difficult because the attribution window is long and commission-only simply does not work for considered purchases.</div>
-        </div>
-
-        <div class="solution-box">
-          <div class="solution-label">What Triptold does differently</div>
-          <div class="solution-text">Join a selective network that helps you secure aligned brand partnerships, build long-term industry relationships, and create sustainable income through high-quality storytelling. Not algorithm-driven reach. Not commission-only risk. Real partnerships with fair pay and proper support.</div>
-        </div>
-
-        <div class="creator-earning">
-          <div class="creator-earning-label">What you can earn</div>
-          <div class="earning-example">
-            Every Triptold collaboration pays a <strong>guaranteed base fee on delivery</strong>, regardless of bookings. Your voice has value before a single person clicks.<br><br>
-            On top of that, your content keeps earning. Every booking traced back to your recommendation generates a referral payment that runs long after you posted. Travel decisions are slow. Your earnings window reflects that.
+        <div style="background:var(--white);border-radius:2px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;border-left:3px solid var(--salmon-d);">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--salmon-d);margin-bottom:0.8rem;">What every collaboration includes</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>A guaranteed base fee paid on delivery, regardless of bookings</div>
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>Ongoing earnings as your content keeps driving bookings over time</div>
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>A brief built around your voice, not a marketing checklist</div>
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>All contracts, disclosure and payment handled by Triptold</div>
           </div>
         </div>
 
-        <div class="points" style="margin-top:1.5rem;">
-          <div class="point">
-            <div class="point-dot"></div>
-            <div>
-              <div class="point-title">Your voice stays yours</div>
-              <div class="point-body">You are matched because your perspective genuinely fits. The brief is built around your storytelling style, not a marketing checklist. If it does not feel right, we do not proceed.</div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-dot"></div>
-            <div>
-              <div class="point-title">All contracts and compliance handled</div>
-              <div class="point-body">Triptold manages contracts, disclosure requirements and payment terms. You focus on creating. We handle the paperwork, properly and compliantly.</div>
-            </div>
-          </div>
-          <div class="point">
-            <div class="point-dot"></div>
-            <div>
-              <div class="point-title">Long-term relationships, not one-offs</div>
-              <div class="point-body">The better we understand your audience and your voice, the better the matches become. Triptold is designed around creators who want to build something sustainable, not chase individual deals.</div>
-            </div>
+        <div style="background:var(--dark);border-radius:2px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1rem;">Founding creators also get</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;">
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Top-rate fee. You are taking a chance on something new.</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Your own editorial profile on the Triptold site</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Priority invitation on the Stories That Travel podcast</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Extended earnings window on all bookings</div>
           </div>
         </div>
 
-        <div class="regulation-strip">
-          <div class="regulation-label">How compliance works on Triptold</div>
-          <div class="reg-items">
-            <div class="reg-item"><div class="reg-check">&#10003;</div><div>Every collaboration includes a signed contract with clear deliverables and payment terms</div></div>
-            <div class="reg-item"><div class="reg-check">&#10003;</div><div>Disclosure requirements are built into the brief. Triptold guides you through what is required</div></div>
-            <div class="reg-item"><div class="reg-check">&#10003;</div><div>Payment is processed by Triptold and arrives on time, without chasing</div></div>
-            <div class="reg-item"><div class="reg-check">&#10003;</div><div>Your earnings are tracked and reported clearly. You always know what your content has generated.</div></div>
-          </div>
-        </div>
-
-        <div class="pilot-incentives">
-          <div class="pilot-incentives-title">What founding creators get</div>
-          <div class="incentive-grid">
-            <div class="incentive">
-              <div class="incentive-icon">💷</div>
-              <div><div class="incentive-title">Top-rate base fee</div><div class="incentive-body">Founding creators are paid at the upper end of the range. You are taking a chance on something new. That is worth more.</div></div>
-            </div>
-            <div class="incentive">
-              <div class="incentive-icon">📄</div>
-              <div><div class="incentive-title">Your editorial profile</div><div class="incentive-body">A professionally written creator profile on the Triptold site, authored by our editorial team. Yours to share, link to, and keep.</div></div>
-            </div>
-            <div class="incentive">
-              <div class="incentive-icon">🎙</div>
-              <div><div class="incentive-title">Podcast priority</div><div class="incentive-body">Founding creators get first invitation to be featured on Stories That Travel when it launches. Built-in audience from day one.</div></div>
-            </div>
-            <div class="incentive">
-              <div class="incentive-icon">📅</div>
-              <div><div class="incentive-title">Extended attribution window</div><div class="incentive-body">Founding creators earn booking commission for longer than the standard window. Travel decisions take time. Your earnings reflect that properly.</div></div>
-            </div>
-            <div class="incentive">
-              <div class="incentive-icon">🏅</div>
-              <div><div class="incentive-title">Founding creator status</div><div class="incentive-body">Permanently recognised on the platform as a founding member of the Triptold network. You were here first.</div></div>
-            </div>
-            <div class="incentive">
-              <div class="incentive-icon">🤝</div>
-              <div><div class="incentive-title">Shape the platform</div><div class="incentive-body">Direct input into how the briefing process, dashboard and creator experience develops. Built with you, not at you.</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="creator-example reveal">
+        <a href="#interest" class="btn btn-dark" style="margin-bottom:0;">Apply to join the network</a>
+      </div>
           <div class="creator-example-header">
             <div class="creator-example-label">Founding creator spotlight</div>
             <div class="creator-example-badge">Triptold Founding Creator</div>
@@ -714,15 +606,7 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
               </div>
             </div>
           </div>
-        </div>
-
-        <div style="margin-top:1.5rem;">
-          <a href="#interest" class="btn btn-primary">Apply to join the network</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+</div>
 
 <!-- FOR TRAVELLERS -->
 <section class="audience-section" id="travellers" style="background:var(--white);">
@@ -885,28 +769,28 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
           <div class="why-dot"></div>
           <div>
             <div class="why-title">Already exists. Not a concept.</div>
-            <div class="why-body">Platform live and in use. Real community assets already built by the founding team across a decade of work in family travel and creator partnerships. Early brand conversations underway. This is seed funding into a working business, not a pitch deck.</div>
+            <div class="why-body">Platform live. Real community assets. Early brand conversations underway. Seed funding into a working business.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-dot"></div>
           <div>
-            <div class="why-title">A platform business, not an agency.</div>
-            <div class="why-body">Triptold earns recurring membership revenue from brands plus commission on bookings its creator network drives. Revenue compounds as the network grows without proportional cost increases.</div>
+            <div class="why-title">Platform economics, not agency economics.</div>
+            <div class="why-body">Recurring membership revenue plus booking commissions. Compounds as the network grows.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-dot"></div>
           <div>
-            <div class="why-title">The moat gets stronger every month.</div>
-            <div class="why-body">Every match, outcome and booking is logged. This editorial intelligence is the proprietary asset. It cannot be replicated by rebuilding the platform. It can only be built by running it.</div>
+            <div class="why-title">A moat that can only be built by running it.</div>
+            <div class="why-body">Every match and booking is logged. That editorial intelligence cannot be replicated from scratch.</div>
           </div>
         </div>
         <div class="why-item">
           <div class="why-dot"></div>
           <div>
             <div class="why-title">The timing is right.</div>
-            <div class="why-body">AI is flattening content and weakening search-led discovery. Audiences are becoming more selective. Trust is the scarce resource in travel. Triptold is built precisely for this moment.</div>
+            <div class="why-body">Trust is the scarce resource in travel discovery. Triptold is built precisely for this moment.</div>
           </div>
         </div>
         <a href="#interest" class="btn btn-primary" style="margin-top:0.5rem;display:inline-block;">Request the investor deck</a>
@@ -1173,7 +1057,7 @@ const revealObs=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
 
 // SECTION INDICATOR + BACK TO TOP + ACTIVE NAV
-const sections=['what','different','story','brands','creators','travellers','team','invest','social','interest'];
+const sections=['what','different','story','brands','creators','alice','travellers','team','invest','social','interest'];
 const indicator=document.getElementById('sectionIndicator');
 const backTop=document.getElementById('backTop');
 
