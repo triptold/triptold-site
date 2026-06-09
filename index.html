@@ -266,12 +266,6 @@ section{padding:6rem 2rem;}
 .si-dot .si-label{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(67,67,67,0.9);color:var(--white);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;}
 .si-dot:hover .si-label{opacity:1;}
 
-/* SECTION BANNER: sticky within each section */
-.sec-banner{position:sticky;top:64px;z-index:50;background:rgba(67,67,67,0.92);backdrop-filter:blur(8px);padding:0.55rem 2rem;display:flex;align-items:center;gap:0.75rem;margin:-5.5rem -2rem 0;width:calc(100% + 4rem);}
-.audience-section .sec-banner{margin-top:-5.5rem;}
-.sec-banner-label{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--salmon);}
-.sec-banner-title{font-size:0.78rem;color:rgba(255,255,255,0.65);font-family:'Merriweather',serif;font-style:italic;}
-.sec-banner-sep{color:rgba(255,255,255,0.2);font-size:0.7rem;}
 
 /* BACK TO TOP */
 .back-top{position:fixed;bottom:2rem;right:1.5rem;z-index:150;width:42px;height:42px;background:var(--dark);border:1px solid rgba(246,201,182,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(10px);transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
@@ -324,7 +318,6 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
   #story>div>div{padding:3.5rem 1.5rem;}
   .pilot-banner{padding:3rem 1.25rem;}
   .social-grid{grid-template-columns:1fr;}
-  .sec-banner{display:none;}
 }
 </style>
 </head>
@@ -390,7 +383,6 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 
 <!-- WHAT IS TRIPTOLD -->
 <section class="what" id="what">
-  <div class="sec-banner"><span class="sec-banner-label">What is Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">The right creator changes everything</span></div>
   <div class="inner">
     <div class="what-grid">
       <div class="what-img reveal">
@@ -436,7 +428,6 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 
 <!-- WHY DIFFERENT -->
 <section class="different" id="different" style="background:var(--dark);position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:url('t_iceland.jpg') center/cover no-repeat;opacity:0.08;pointer-events:none;"></div>
-  <div class="sec-banner"><span class="sec-banner-label">Why Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Not a database. Not an agency.</span></div>
   <div class="inner" style="position:relative;z-index:2;">
     <div class="reveal">
       <h2 class="sec-title sec-title-white">Not a database. Not an agency. Something built differently.</h2>
@@ -507,7 +498,6 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 
 <!-- FOR BRANDS -->
 <section class="audience-section" id="brands" style="background:var(--white);">
-  <div class="sec-banner"><span class="sec-banner-label">For travel brands</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Reach the people already looking for you</span></div>
   <div class="inner">
     <div class="audience-grid">
       <div class="audience-img reveal">
@@ -550,7 +540,6 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 
 <!-- FOR CREATORS -->
 <section class="audience-section" id="creators" style="background:var(--salmon-l);">
-  <div class="sec-banner"><span class="sec-banner-label">For creators</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Partnerships that fit. Pay that is fair.</span></div>
   <div class="inner">
     <div class="audience-grid flip">
       <div class="audience-img reveal">
@@ -610,7 +599,6 @@ footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content
 
 <!-- FOR TRAVELLERS -->
 <section class="audience-section" id="travellers" style="background:var(--white);">
-  <div class="sec-banner"><span class="sec-banner-label">For travellers</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Discover places through people you trust</span></div>
   <div class="inner">
     <div class="audience-grid">
       <div class="audience-img reveal">
