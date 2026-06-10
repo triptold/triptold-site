@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Triptold: Stories That Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --salmon: #F6C9B6;
+  --salmon-l: #FBE8DF;
+  --salmon-d: #C8785A;
+  --dark: #434343;
+  --mid: #5A5A5A;
+  --muted: #6B7280;
+  --light: #F8F3EF;
+  --white: #FFFFFF;
+  --green: #2E7060;
+  --green-l: #E8F4F0;
+  --slate: #B6BDC0;
+  --slate-l: #DEE7EC;
+  --slate-d: #8E959A;
+  --border: #E8DDD8;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Lato',sans-serif;color:var(--dark);background:var(--white);overflow-x:hidden;}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(67,67,67,0.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(182,189,192,0.15);display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;}
+.nav-logo{display:flex;align-items:center;gap:0.75rem;text-decoration:none;}
+.nav-logo img{height:34px;width:34px;object-fit:contain;}
+.nav-wordmark{font-family:'Merriweather',serif;font-style:italic;font-size:1.1rem;color:var(--salmon);}
+.nav-links{display:flex;align-items:center;gap:0.1rem;}
+.nav-links a{color:#A0A8B0;text-decoration:none;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.5rem 0.85rem;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+.nav-cta{background:var(--salmon)!important;color:var(--dark)!important;border-radius:2px;padding:0.5rem 1.2rem!important;transition:background 0.2s!important;}
+.nav-cta:hover{background:#E8A88A!important;}
+.hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--salmon);}
+
+/* BUTTONS */
+.btn{display:inline-block;text-decoration:none;border:none;cursor:pointer;font-family:'Lato',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;border-radius:2px;padding:0.9rem 2rem;font-size:0.82rem;transition:all 0.2s;}
+.btn-primary{background:var(--salmon);color:var(--dark);}
+.btn-primary:hover{background:#E8A88A;transform:translateY(-1px);}
+.btn-dark{background:var(--dark);color:var(--white);}
+.btn-dark:hover{background:#2A2A2A;transform:translateY(-1px);}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,0.4);}
+.btn-outline:hover{border-color:var(--white);}
+.btn-outline-dark{background:transparent;color:var(--dark);border:1.5px solid var(--border);}
+.btn-outline-dark:hover{border-color:var(--dark);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:620px;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:url('t_hero.jpg') center/cover no-repeat;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(67,67,67,0.88) 0%,rgba(67,67,67,0.5) 55%,rgba(67,67,67,0.15) 100%);}
+.hero-content{position:relative;z-index:2;padding:0 2.5rem;margin-left:8vw;max-width:660px;animation:fadeUp 1s ease forwards;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+.eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--salmon);margin-bottom:1.1rem;}
+.hero h1{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(2.1rem,4.8vw,3.8rem);color:var(--white);line-height:1.15;margin-bottom:1.4rem;}
+.hero h1 em{color:var(--salmon);font-style:italic;}
+.hero-body{font-size:1.05rem;color:rgba(255,255,255,0.85);line-height:1.8;margin-bottom:2.2rem;max-width:520px;}
+.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-pilot{margin-top:2rem;display:inline-flex;align-items:center;gap:0.6rem;background:rgba(255,255,255,0.08);border:1px solid rgba(246,201,182,0.3);border-radius:2px;padding:0.6rem 1rem;}
+.hero-pilot-dot{width:8px;height:8px;border-radius:50%;background:var(--salmon);animation:pulse 2s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
+.hero-pilot-text{font-size:0.78rem;color:rgba(255,255,255,0.8);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;}
+.hero-pilot-text em{color:var(--salmon);font-style:normal;}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.4);font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:0.5rem;z-index:2;animation:pulseScroll 3s ease infinite;}
+.hero-scroll::after{content:'';width:1px;height:44px;background:rgba(255,255,255,0.25);display:block;}
+@keyframes pulseScroll{0%,100%{opacity:0.4;}50%{opacity:0.8;}}
+
+/* SECTIONS */
+section{padding:6rem 2rem;}
+.inner{max-width:1080px;margin:0 auto;}
+.sec-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--salmon-d);margin-bottom:0.7rem;}
+.sec-title{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--dark);line-height:1.2;margin-bottom:1rem;}
+.sec-body{font-size:0.97rem;color:var(--muted);line-height:1.82;}
+.sec-title-white{color:var(--white);}
+.sec-title-2{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--salmon-d);line-height:1.2;margin-top:-0.3rem;margin-bottom:1rem;}
+.sec-eyebrow-light{color:var(--salmon);}
+.sec-body-light{color:#A8B0BC;}
+
+/* WHAT */
+.what{background:var(--light);}
+.what-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-top:3.5rem;}
+.what-img{border-radius:2px;overflow:hidden;aspect-ratio:4/3;position:relative;}
+.what-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.what-img:hover img{transform:scale(1.03);}
+.img-caption{position:absolute;bottom:1rem;left:1rem;background:rgba(67,67,67,0.82);color:var(--salmon);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.35rem 0.7rem;border-radius:2px;}
+.pull-quote{border-left:3px solid var(--salmon);padding:1rem 1.3rem;font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);line-height:1.7;background:var(--white);margin-top:1.8rem;}
+
+/* PILOT BANNER */
+.pilot-banner{background:var(--dark);padding:3.5rem 2rem;}
+.pilot-banner-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;}
+.pilot-title{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);line-height:1.25;margin-bottom:0.8rem;}
+.pilot-title em{color:var(--salmon);}
+.pilot-body{font-size:0.95rem;color:#A0A8B0;line-height:1.75;max-width:580px;}
+.pilot-stats{display:flex;gap:2.5rem;margin-top:1.8rem;}
+.pilot-stat-n{font-family:'Merriweather',serif;font-style:italic;font-size:2rem;font-weight:400;color:var(--salmon);}
+.pilot-stat-l{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#808890;margin-top:0.1rem;}
+.pilot-cta-box{background:rgba(246,201,182,0.08);border:1px solid rgba(246,201,182,0.2);border-radius:2px;padding:2rem;min-width:240px;text-align:center;}
+.pilot-cta-label{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:0.8rem;}
+.pilot-launch{font-family:'Merriweather',serif;font-style:italic;font-size:1.6rem;color:var(--white);margin-bottom:0.4rem;}
+.pilot-launch-sub{font-size:0.82rem;color:#808890;margin-bottom:1.5rem;}
+
+/* DIFFERENT */
+.different{background:var(--dark);}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:3.5rem;background:rgba(255,255,255,0.05);border-radius:2px;overflow:hidden;}
+.diff-item{background:#3A3A3A;padding:2rem 1.8rem;transition:background 0.2s;}
+.diff-item:hover{background:#424242;}
+.diff-num{font-family:'Merriweather',serif;font-style:italic;font-size:3.5rem;font-weight:300;color:rgba(246,201,182,0.15);line-height:0.85;margin-bottom:0.8rem;}
+.diff-title{font-family:'Merriweather',serif;font-style:italic;font-size:1.1rem;color:var(--white);margin-bottom:0.7rem;line-height:1.25;}
+.diff-body{font-size:0.87rem;color:#A0A8B0;line-height:1.72;}
+
+/* PHOTO BREAK */
+.photo-break{height:400px;background:url('t_lantern.jpg') center 60%/cover;position:relative;}
+.photo-break-overlay{position:absolute;inset:0;background:rgba(67,67,67,0.5);display:flex;align-items:center;justify-content:center;}
+.photo-break-quote{font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.6rem,3.5vw,2.6rem);color:var(--white);text-align:center;max-width:800px;padding:0 2rem;line-height:1.45;}
+.photo-break-quote em{color:var(--salmon);}
+
+/* AUDIENCE SECTIONS */
+.audience-section{padding:6rem 2rem;}
+.audience-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.audience-grid.flip .audience-img{order:2;}
+.audience-grid.flip .audience-text{order:1;}
+.audience-img{border-radius:2px;overflow:hidden;aspect-ratio:3/4;position:relative;}
+.audience-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s;}
+.audience-img:hover img{transform:scale(1.03);}
+.problem-box{background:var(--light);border-left:3px solid var(--border);padding:1.2rem 1.4rem;margin:1.5rem 0;border-radius:0 2px 2px 0;}
+.problem-label{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem;}
+.problem-text{font-size:0.92rem;color:var(--dark);line-height:1.7;font-style:italic;}
+.solution-box{background:var(--salmon-l);border-left:3px solid var(--salmon-d);padding:1.2rem 1.4rem;margin:1.5rem 0;border-radius:0 2px 2px 0;}
+.solution-label{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon-d);margin-bottom:0.4rem;}
+.solution-text{font-size:0.92rem;color:var(--dark);line-height:1.7;}
+.points{display:flex;flex-direction:column;gap:0.9rem;margin:1.5rem 0;}
+.point{display:flex;gap:0.9rem;align-items:flex-start;}
+.point-dot{width:7px;height:7px;background:var(--salmon-d);border-radius:50%;flex-shrink:0;margin-top:0.42rem;}
+.point-title{font-weight:700;font-size:0.9rem;color:var(--dark);}
+.point-body{font-size:0.87rem;color:var(--muted);line-height:1.65;margin-top:0.2rem;}
+.pilot-apply-box{background:var(--dark);border-radius:2px;padding:1.5rem 1.8rem;margin-top:2rem;}
+.pilot-apply-label{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:0.5rem;}
+.pilot-apply-text{font-size:0.9rem;color:#A0A8B0;line-height:1.65;margin-bottom:1.2rem;}
+.pricing-strip{background:var(--light);border-radius:2px;padding:1.5rem 1.8rem;margin-top:1.8rem;}
+.pricing-strip-label{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.price-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.6rem 0;border-bottom:1px solid var(--border);font-size:0.88rem;}
+.price-row:last-child{border-bottom:none;}
+.price-name{color:var(--dark);font-weight:700;}
+.price-desc{color:var(--muted);font-size:0.78rem;margin-top:0.15rem;}
+.price-val{font-family:'Merriweather',serif;font-style:italic;color:var(--salmon-d);font-size:0.95rem;white-space:nowrap;margin-left:1rem;}
+.creator-earning{background:var(--green-l);border-radius:2px;padding:1.5rem 1.8rem;margin-top:1.5rem;border-left:3px solid var(--green);}
+.creator-earning-label{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);margin-bottom:0.8rem;}
+.earning-example{font-size:0.88rem;color:var(--dark);line-height:1.65;}
+.earning-example strong{color:var(--green);}
+.creator-form-fields{display:flex;flex-direction:column;gap:0.9rem;margin-top:1.2rem;}
+.regulation-strip{background:var(--slate-l);border:1px solid var(--slate);border-radius:2px;padding:1.5rem 1.8rem;margin-top:1.8rem;}
+.regulation-label{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.8rem;}
+.reg-items{display:flex;flex-direction:column;gap:0.5rem;}
+.reg-item{display:flex;gap:0.7rem;align-items:flex-start;font-size:0.85rem;color:var(--muted);}
+.reg-check{color:var(--green);font-size:1rem;flex-shrink:0;margin-top:0.05rem;}
+
+/* POOL BREAK */
+.pool-break{height:380px;background:url('t_pool_dusk.jpg') center 40%/cover;position:relative;}
+.pool-break-overlay{position:absolute;inset:0;background:rgba(67,67,67,0.38);display:flex;align-items:center;justify-content:center;}
+
+/* INVESTMENT */
+.investment-bg{background:var(--dark);}
+.investment-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3.5rem;}
+.inv-card{background:#323232;border-radius:2px;padding:2rem 2.2rem;}
+.inv-card-title{font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1.4rem;}
+.inv-row{display:flex;justify-content:space-between;padding:0.65rem 0;border-bottom:1px solid rgba(255,255,255,0.07);font-size:0.9rem;}
+.inv-row:last-child{border-bottom:none;}
+.inv-label{color:#A0A8B0;}
+.inv-value{font-family:'Merriweather',serif;font-style:italic;color:var(--salmon);font-size:0.98rem;}
+.seis-badge{display:inline-flex;align-items:center;gap:0.5rem;background:var(--green);color:var(--white);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;padding:0.5rem 1rem;border-radius:2px;margin-top:1.5rem;}
+.seis-explainer{background:rgba(46,112,96,0.15);border:1px solid rgba(46,112,96,0.3);border-radius:2px;padding:1.2rem 1.4rem;margin-top:1.2rem;}
+.seis-explainer-title{font-size:0.8rem;font-weight:700;color:#7BC4A8;margin-bottom:0.4rem;}
+.seis-explainer-body{font-size:0.84rem;color:#A0A8B0;line-height:1.65;}
+.inv-why{display:flex;flex-direction:column;gap:1.3rem;}
+.why-item{display:flex;gap:1rem;}
+.why-dot{width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;}
+.why-title{font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;}
+.why-body{font-size:0.87rem;color:#A0A8B0;line-height:1.65;}
+
+/* FORM */
+.form-section{background:var(--salmon-l);}
+.form-wrap{max-width:640px;margin:2.5rem auto 0;background:var(--white);border-radius:2px;padding:2.5rem;box-shadow:0 4px 28px rgba(67,67,67,0.10);}
+.fg{margin-bottom:1.15rem;}
+.fl{display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.38rem;}
+.fi,.fs,.fta{width:100%;border:1px solid var(--border);border-radius:2px;padding:0.7rem 0.9rem;font-family:'Lato',sans-serif;font-size:0.92rem;color:var(--dark);background:var(--white);outline:none;transition:border-color 0.2s,box-shadow 0.2s;}
+.fi:focus,.fs:focus,.fta:focus{border-color:var(--salmon-d);box-shadow:0 0 0 3px rgba(246,201,182,0.2);}
+.fta{resize:vertical;min-height:80px;line-height:1.55;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.form-hidden{display:none;}
+.fsub{width:100%;background:var(--dark);color:var(--white);border:none;padding:1rem;font-family:'Lato',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;margin-top:0.8rem;transition:all 0.2s;}
+.fsub:hover{background:#2A2A2A;transform:translateY(-1px);}
+.form-success{display:none;text-align:center;padding:2rem;}
+.form-success.show{display:block;}
+.fs-icon{font-size:2.5rem;margin-bottom:1rem;}
+.fs-title{font-family:'Merriweather',serif;font-style:italic;font-size:1.3rem;color:var(--dark);margin-bottom:0.6rem;}
+.fs-body{font-size:0.9rem;color:var(--muted);line-height:1.7;}
+
+/* FOUNDING CREATOR EXAMPLE */
+.creator-example{background:var(--white);border-radius:2px;overflow:hidden;box-shadow:0 4px 24px rgba(67,67,67,0.10);margin-top:3rem;}
+.creator-example-header{background:var(--dark);padding:1.2rem 1.8rem;display:flex;align-items:center;justify-content:space-between;}
+.creator-example-label{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--salmon);}
+.creator-example-badge{background:var(--salmon);color:var(--dark);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:2px;}
+.creator-example-body{display:grid;grid-template-columns:200px 1fr;gap:0;}
+.creator-example-img{position:relative;}
+.creator-example-img img{width:200px;height:280px;object-fit:cover;object-position:center 15%;display:block;}
+.creator-triptold-mark{position:absolute;bottom:0.7rem;left:0.7rem;background:var(--salmon);color:var(--dark);font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:0.25rem 0.5rem;border-radius:2px;display:flex;align-items:center;gap:0.3rem;}
+.creator-triptold-mark::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--dark);display:inline-block;}
+.creator-example-content{padding:1.5rem 1.8rem;}
+.creator-example-name{font-family:'Merriweather',serif;font-style:italic;font-size:1.2rem;color:var(--dark);margin-bottom:0.2rem;}
+.creator-example-role{font-size:0.75rem;color:var(--muted);margin-bottom:1rem;}
+.creator-example-role a{color:var(--salmon-d);text-decoration:none;}
+.creator-example-role a:hover{text-decoration:underline;}
+.creator-insight{background:var(--salmon-l);border-left:3px solid var(--salmon-d);padding:0.9rem 1.1rem;margin-bottom:1rem;font-style:italic;font-size:0.88rem;color:var(--dark);line-height:1.65;}
+.creator-tags{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.8rem;}
+.creator-tag-pill{background:var(--light);color:var(--muted);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;}
+
+/* FOUNDER PILOT INCENTIVES */
+.pilot-incentives{background:var(--dark);border-radius:2px;padding:1.8rem;margin-top:2rem;}
+.pilot-incentives-title{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1.2rem;}
+.incentive-grid{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;}
+.incentive{display:flex;gap:0.7rem;align-items:flex-start;}
+.incentive-icon{font-size:1rem;flex-shrink:0;margin-top:0.05rem;}
+.incentive-title{font-size:0.85rem;font-weight:700;color:var(--white);margin-bottom:0.2rem;}
+.incentive-body{font-size:0.8rem;color:#A0A8B0;line-height:1.55;}
+
+/* BRAND FOUNDING BENEFITS */
+.founding-benefits{background:var(--dark);border-radius:2px;padding:1.8rem;margin-top:1.8rem;}
+.founding-benefits-title{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1.2rem;}
+.benefit-row{display:flex;gap:0.8rem;align-items:flex-start;padding:0.7rem 0;border-bottom:1px solid rgba(255,255,255,0.07);}
+.benefit-row:last-child{border-bottom:none;}
+.benefit-check{color:var(--salmon);font-weight:700;flex-shrink:0;margin-top:0.1rem;}
+.benefit-title{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:0.15rem;}
+.benefit-body{font-size:0.8rem;color:#A0A8B0;line-height:1.5;}
+
+/* TRAVELLER VALUE */
+.traveller-value{background:var(--slate-l);border-radius:2px;padding:1.5rem 1.8rem;margin-top:1.5rem;}
+.traveller-value-title{font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate-d);margin-bottom:1rem;}
+.tval-item{display:flex;gap:0.8rem;padding:0.6rem 0;border-bottom:1px solid rgba(182,189,192,0.4);font-size:0.87rem;}
+.tval-item:last-child{border-bottom:none;}
+.tval-emoji{flex-shrink:0;font-size:1rem;}
+.tval-title{font-weight:700;color:var(--dark);margin-bottom:0.15rem;}
+.tval-body{font-size:0.82rem;color:var(--muted);line-height:1.55;}
+
+/* SHARE NUDGE */
+.share-nudge{background:var(--light);border:1px solid var(--border);border-radius:2px;padding:1.5rem 1.8rem;margin-top:1.5rem;display:flex;gap:1.2rem;align-items:center;}
+.share-nudge-text{font-size:0.88rem;color:var(--dark);line-height:1.6;flex:1;}
+.share-nudge-text strong{display:block;margin-bottom:0.2rem;}
+.share-btn{background:var(--dark);color:var(--white);border:none;font-family:'Lato',sans-serif;font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.65rem 1.2rem;border-radius:2px;cursor:pointer;white-space:nowrap;transition:background 0.2s;}
+.share-btn:hover{background:#2A2A2A;}
+.share-btn.copied{background:var(--green);}
+
+/* SECTION INDICATOR */
+.section-indicator{position:fixed;top:50%;right:1.5rem;transform:translateY(-50%);z-index:150;display:flex;flex-direction:column;gap:0.5rem;opacity:0;transition:opacity 0.4s;}
+.section-indicator.visible{opacity:1;}
+.si-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.25);cursor:pointer;transition:all 0.3s;position:relative;}
+.si-dot.active{background:var(--salmon);transform:scale(1.3);}
+.si-dot:hover{background:rgba(255,255,255,0.6);}
+.si-dot .si-label{position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:rgba(67,67,67,0.9);color:var(--white);font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.6rem;border-radius:2px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.2s;}
+.si-dot:hover .si-label{opacity:1;}
+
+
+/* SECTION BANNER */
+.sec-banner{position:sticky;top:64px;z-index:50;background:rgba(67,67,67,0.95);backdrop-filter:blur(8px);padding:0.5rem 2rem;display:flex;align-items:center;gap:0.75rem;}
+.sec-banner-label{font-size:0.68rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--salmon);}
+.sec-banner-title{font-size:0.78rem;color:rgba(255,255,255,0.6);font-family:'Merriweather',serif;font-style:italic;}
+.sec-banner-sep{color:rgba(255,255,255,0.2);}
+
+/* BACK TO TOP */
+.back-top{position:fixed;bottom:2rem;right:1.5rem;z-index:150;width:42px;height:42px;background:var(--dark);border:1px solid rgba(246,201,182,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(10px);transition:all 0.3s;box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+.back-top.visible{opacity:1;transform:translateY(0);}
+.back-top:hover{background:var(--salmon);border-color:var(--salmon);}
+.back-top svg{width:16px;height:16px;fill:none;stroke:var(--white);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.back-top:hover svg{stroke:var(--dark);}
+
+/* SOCIAL SECTION */
+.social-section{background:var(--dark);padding:5rem 2rem;}
+.social-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem;}
+.social-card{background:#323232;border-radius:2px;padding:1.6rem 1.4rem;display:flex;flex-direction:column;gap:0.8rem;transition:background 0.2s;}
+.social-card:hover{background:#3A3A3A;}
+.social-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.social-name{font-weight:700;font-size:0.9rem;color:var(--white);}
+.social-handle{font-size:0.8rem;color:#606870;}
+.social-coming{display:inline-flex;align-items:center;gap:0.4rem;background:rgba(246,201,182,0.1);border:1px solid rgba(246,201,182,0.2);border-radius:2px;padding:0.25rem 0.6rem;font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--salmon);width:fit-content;margin-top:0.2rem;}
+.social-coming-dot{width:5px;height:5px;border-radius:50%;background:var(--salmon);animation:pulse 2s ease infinite;}
+.social-desc{font-size:0.82rem;color:#808890;line-height:1.6;}
+
+/* FOOTER */
+footer{background:var(--dark);padding:3.5rem 2.5rem;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1.5rem;}
+.footer-brand{display:flex;align-items:center;gap:0.75rem;}
+.footer-logo{height:32px;width:32px;object-fit:contain;opacity:0.6;}
+.footer-wordmark{font-family:'Merriweather',serif;font-style:italic;color:var(--salmon);font-size:1rem;opacity:0.8;}
+.footer-tagline{font-size:0.78rem;color:#606870;margin-top:0.25rem;}
+.footer-links{font-size:0.8rem;color:#606870;text-align:right;}
+.footer-links a{color:#808890;text-decoration:none;display:inline-block;margin-bottom:0.3rem;}
+.footer-links a:hover{color:var(--salmon);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .what-grid,.audience-grid,.investment-grid,.pilot-banner-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .audience-grid.flip .audience-img,.audience-grid.flip .audience-text{order:unset;}
+  .diff-grid{grid-template-columns:1fr;}
+  .pilot-stats{flex-wrap:wrap;gap:1.5rem;}
+  .form-row{grid-template-columns:1fr;}
+  .hero-content{margin-left:0;}
+  footer{flex-direction:column;}
+  .footer-links{text-align:left;}
+  .social-grid{grid-template-columns:1fr 1fr;}
+  .section-indicator{display:none;}
+  .back-top{right:1rem;bottom:1rem;}
+  /* Story and Alice splits */
+  #story>div{grid-template-columns:1fr;}
+  #story>div>div{min-height:300px;}
+  #alice>div{grid-template-columns:1fr!important;}
+  #alice>div>div:first-child{min-height:280px!important;}
+  /* All inline 2-col grids */
+  div[style*="grid-template-columns:1fr 1fr;gap:5rem"]{grid-template-columns:1fr!important;gap:2rem!important;}
+  div[style*="grid-template-columns:1fr 1fr;gap:4rem"]{grid-template-columns:1fr!important;gap:2rem!important;}
+  div[style*="grid-template-columns:1fr 1fr;gap:3rem"]{grid-template-columns:1fr!important;gap:2rem!important;}
+  div[style*="grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem"]{grid-template-columns:1fr!important;}
+  /* Three-col grids */
+  div[style*="grid-template-columns:1fr 1fr 1fr"]{grid-template-columns:1fr!important;}
+  div[style*="grid-template-columns:repeat(3,1fr)"]{grid-template-columns:1fr!important;}
+  .incentive-grid{grid-template-columns:1fr!important;}
+}
+@media(max-width:600px){
+  section,.audience-section,.social-section{padding:4rem 1.25rem;}
+  .pilot-banner{padding:3rem 1.25rem;}
+  .social-grid{grid-template-columns:1fr;}
+  #story>div>div{padding:3rem 1.5rem;}
+  #alice>div>div{padding:2.5rem 1.5rem!important;}
+  .hero-actions{flex-direction:column;}
+  .hero h1{font-size:2rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="#" class="nav-logo">
+    <img src="t_logo_white.png" alt="Triptold">
+    <span class="nav-wordmark">Triptold</span>
+  </a>
+  <div class="nav-links">
+    <a href="#brands">For brands</a>
+    <a href="#creators">For creators</a>
+    <a href="#travellers">For travellers</a>
+    <a href="#invest">Investors</a>
+    <a href="#interest" class="nav-cta">Apply for the pilot</a>
+  </div>
+  <button class="hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- SECTION INDICATOR -->
+<div class="section-indicator" id="sectionIndicator">
+  <div class="si-dot" onclick="scrollToSection('what')" data-section="what"><span class="si-label">What is Triptold</span></div>
+  <div class="si-dot" onclick="scrollToSection('different')" data-section="different"><span class="si-label">Why different</span></div>
+  <div class="si-dot" onclick="scrollToSection('story')" data-section="story"><span class="si-label">Why we built this</span></div>
+  <div class="si-dot" onclick="scrollToSection('brands')" data-section="brands"><span class="si-label">For brands</span></div>
+  <div class="si-dot" onclick="scrollToSection('creators')" data-section="creators"><span class="si-label">For creators</span></div>
+  <div class="si-dot" onclick="scrollToSection('alice')" data-section="alice"><span class="si-label">Creator spotlight</span></div>
+  <div class="si-dot" onclick="scrollToSection('travellers')" data-section="travellers"><span class="si-label">For travellers</span></div>
+  <div class="si-dot" onclick="scrollToSection('team')" data-section="team"><span class="si-label">The team</span></div>
+  <div class="si-dot" onclick="scrollToSection('invest')" data-section="invest"><span class="si-label">Investors</span></div>
+  <div class="si-dot" onclick="scrollToSection('social')" data-section="social"><span class="si-label">Follow us</span></div>
+  <div class="si-dot" onclick="scrollToSection('interest')" data-section="interest"><span class="si-label">Get involved</span></div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+
+<section class="hero" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="eyebrow">A trip well told is a journey somebody else wants to take</div>
+    <h1>Travel brands meet<br><em>the creators their guests already trust.</em></h1>
+    <p class="hero-body">Triptold is a curated matchmaking platform for boutique travel brands and trusted storytellers. We launch January 2027. Until then, we are building a small, deliberate founding network. Applications are open now.</p>
+    <div class="hero-actions">
+      <a href="#interest" class="btn btn-primary">Apply for the pilot</a>
+      <a href="#what" class="btn btn-outline">How it works</a>
+    </div>
+    <div class="hero-pilot">
+      <div class="hero-pilot-dot"></div>
+      <div class="hero-pilot-text">Pilot opens <em>Autumn 2026</em> &nbsp;·&nbsp; Full launch <em>January 2027</em></div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- WHAT IS TRIPTOLD -->
+<div class="sec-banner"><span class="sec-banner-label">What is Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">The right creator changes everything</span></div>
+<section class="what" id="what">
+  <div class="inner">
+    <div class="what-grid">
+      <div class="what-img reveal">
+        <img src="t_door.jpg" alt="Stories That Travel">
+        <div class="img-caption">Stories That Travel</div>
+      </div>
+      <div class="reveal">
+        <div class="sec-eyebrow">What is Triptold</div>
+        <h2 class="sec-title">The wrong creator makes content.</h2>
+        <h2 class="sec-title-2">The right one makes people want to be there.</h2>
+        <p class="sec-body">Most creator marketing focuses on reach. Triptold focuses on fit. We connect boutique travel brands with creators whose audiences already trust the kinds of experiences those brands offer.</p>
+        <p class="sec-body" style="margin-top:1rem;">Every recommendation is made by people, not algorithms. Every match comes with written editorial reasoning. Every collaboration builds intelligence that makes the next match sharper.</p>
+        <div class="pull-quote">"A family sharing the hotel they return to every summer. A food writer discovering somewhere unforgettable. A slow travel creator finding a quieter coastline. These are the stories that travel."</div>
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#brands" class="btn btn-dark">I have a travel brand</a>
+          <a href="#creators" class="btn btn-outline-dark">I am a creator</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILOT BANNER -->
+<div style="background:var(--dark);padding:4rem 2rem;">
+  <div style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:3rem;flex-wrap:wrap;" class="reveal">
+    <div style="flex:1;min-width:280px;">
+      <div class="sec-eyebrow sec-eyebrow-light" style="margin-bottom:1rem;">Applications open now</div>
+      <div class="pilot-title">We are not open yet. <em>That is the point.</em></div>
+      <p style="font-size:0.95rem;color:#A0A8B0;line-height:1.75;margin-top:0.8rem;max-width:520px;">We launch publicly in January 2027. Until then we are choosing our founding brands and creators carefully. When we are deliberately small, we can be genuinely good.</p>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+      <div style="text-align:center;padding:1rem 1.5rem;border:1px solid rgba(246,201,182,0.2);border-radius:2px;">
+        <div class="pilot-stat-n">Autumn 2026</div>
+        <div class="pilot-stat-l">Pilot begins</div>
+      </div>
+      <div style="text-align:center;padding:1rem 1.5rem;border:1px solid rgba(246,201,182,0.2);border-radius:2px;">
+        <div class="pilot-stat-n">Jan 2027</div>
+        <div class="pilot-stat-l">Public launch</div>
+      </div>
+      <a href="#interest" class="btn btn-primary" style="white-space:nowrap;">Apply for the pilot</a>
+    </div>
+  </div>
+</div>
+
+<!-- WHY DIFFERENT -->
+<div class="sec-banner"><span class="sec-banner-label">Why Triptold</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Not a database. Not an agency.</span></div>
+<section class="different" id="different" style="background:var(--dark);position:relative;overflow:hidden;"><div style="position:absolute;inset:0;background:url('t_iceland.jpg') center/cover no-repeat;opacity:0.08;pointer-events:none;"></div>
+  <div class="inner" style="position:relative;z-index:2;">
+    <div class="reveal">
+      <h2 class="sec-title sec-title-white">Not a database. Not an agency. Something built differently.</h2>
+      <p class="sec-body sec-body-light" style="max-width:600px;">Most platforms optimise for scale. We optimise for trust. Here is what that means in practice.</p>
+    </div>
+    <div class="diff-grid reveal">
+      <div class="diff-item">
+        <div class="diff-num">01</div>
+        <div class="diff-title">Editorial matching, not search filters</div>
+        <div class="diff-body">Every creator recommendation includes written reasoning explaining why they fit, what audience trust they hold, and what story they are uniquely positioned to tell. A shortlist of 5 to 8 people, not a database of thousands.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">02</div>
+        <div class="diff-title">Emotional territory, not follower count</div>
+        <div class="diff-body">A creator with 12,000 deeply engaged followers in the right territory outperforms a 200,000 generalist audience. We find people whose audiences already trust the kind of experience you offer.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">03</div>
+        <div class="diff-title">Agency-quality support at platform economics</div>
+        <div class="diff-body">Contracts, compliance, briefing, content guidance, reporting. The work of a good creative agency, structured as a platform. You pay less. You get more. The administrative burden disappears entirely.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">04</div>
+        <div class="diff-title">Bookings you can actually measure</div>
+        <div class="diff-body">For the first time, you can connect a creator's story directly to real bookings. Not impressions. Not reach. Actual stays. We measure what matters, over a timeframe that reflects how people actually make travel decisions.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">05</div>
+        <div class="diff-title">Compliance handled properly, not left to chance</div>
+        <div class="diff-body">Paid partnerships must be disclosed. Contracts must be signed. Most brands and creators handle this inconsistently or not at all. On Triptold, disclosure, contracts and payment are handled properly as standard. You focus on the work. We handle the paperwork.</div>
+      </div>
+      <div class="diff-item">
+        <div class="diff-num">06</div>
+        <div class="diff-title">Intelligence that compounds over time</div>
+        <div class="diff-body">Every brief, every match, every booking outcome is logged. This builds proprietary insight about which creator and brand combinations actually drive travel decisions. The longer the network runs, the sharper it becomes.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BREAK -->
+<div class="photo-break">
+  <div class="photo-break-overlay">
+    <div class="photo-break-quote">
+      "We are inspired by destinations. <em>We make our decisions because of people.</em>"
+    </div>
+  </div>
+</div>
+
+<!-- WHY WE BUILT THIS -->
+<section style="background:var(--white);padding:0;" id="story">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:600px;">
+    <div style="position:relative;overflow:hidden;min-height:500px;">
+      <img src="t_verandah.jpg" alt="A place worth telling stories about" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;">
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(67,67,67,0.75) 0%,rgba(67,67,67,0.3) 100%);"></div>
+      <div style="position:relative;z-index:2;padding:4rem 3.5rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;" class="reveal">
+        <div class="sec-eyebrow" style="color:var(--salmon);margin-bottom:1rem;">Why we built this</div>
+        <blockquote style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.4rem,2.5vw,2.1rem);color:var(--white);line-height:1.35;margin:0;">
+          "The problem is not lack of content.<br><em style="color:var(--salmon);">It is lack of meaning.</em>"
+        </blockquote>
+      </div>
+    </div>
+    <div style="background:var(--light);padding:5rem 4rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
+      <div class="sec-eyebrow" style="margin-bottom:0.8rem;">Why we built this</div>
+      <h3 style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.5rem,2.5vw,2rem);color:var(--dark);line-height:1.3;margin-bottom:1.6rem;">You do not need another creator platform.<br>You need a different one.</h3>
+      <p style="font-size:1rem;color:var(--dark);line-height:1.85;margin-bottom:1.4rem;">Travel decisions carry enormous emotional weight. People invest time, money, hope and memory into experiences they cannot get back.</p>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:1.4rem;">A bad jumper is annoying. A bad holiday can become a lost anniversary, wasted savings, or precious time you cannot get back. People are not buying travel logically. They are buying anticipation, identity, connection and escape.</p>
+      <p style="font-size:1rem;color:var(--muted);line-height:1.85;margin-bottom:2rem;">Much of modern travel content is driven by incentives that have little to do with genuine experience. Popularity is not the same thing as trust.</p>
+      <p style="font-size:0.9rem;font-weight:700;color:var(--dark);letter-spacing:0.01em;">That is what we are building. Deliberately, carefully, and with the right people from the start.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOR BRANDS -->
+<div class="sec-banner"><span class="sec-banner-label">For travel brands</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Reach the people already looking for you</span></div>
+<section class="audience-section" id="brands" style="background:var(--white);">
+  <div class="inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:stretch;">
+      <div style="border-radius:2px;overflow:hidden;min-height:500px;" class="reveal">
+        <img src="t_brands.jpg" alt="Boutique travel" style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div class="reveal">
+        <div class="sec-eyebrow">For travel brands and hotels</div>
+        <h2 class="sec-title">You have something genuinely special.</h2>
+        <h2 class="sec-title-2">The right audience is waiting.</h2>
+        <p class="sec-body" style="margin-bottom:2.5rem;">Stop paying for reach. Start paying for fit. Triptold connects your property with creators whose audiences already trust the kind of experience you offer.</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:2rem;">
+          <div style="background:var(--light);border-radius:2px;padding:1.4rem;border-top:3px solid var(--salmon);">
+            <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.5rem;">The right match</div>
+            <div style="font-size:0.85rem;color:var(--muted);line-height:1.65;">A shortlist of creators chosen for fit, not follower count. Each with written editorial reasoning explaining exactly why they suit your property.</div>
+          </div>
+          <div style="background:var(--light);border-radius:2px;padding:1.4rem;border-top:3px solid var(--salmon);">
+            <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.5rem;">Fully managed</div>
+            <div style="font-size:0.85rem;color:var(--muted);line-height:1.65;">Brief, contracts, compliance, content, reporting. Everything handled. You focus on your guests.</div>
+          </div>
+          <div style="background:var(--light);border-radius:2px;padding:1.4rem;border-top:3px solid var(--salmon);">
+            <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.5rem;">Bookings measured</div>
+            <div style="font-size:0.85rem;color:var(--muted);line-height:1.65;">Connect creator content directly to real stays. You stop guessing whether it worked.</div>
+          </div>
+        </div>
+
+        <div style="background:var(--dark);border-radius:2px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1rem;">Founding brands also get</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;">
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Featured in the podcast launch series</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>First access to the full creator network</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Founding rates locked for two years</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Named as a founding brand on the platform</div>
+          </div>
+        </div>
+        <a href="#interest" class="btn btn-primary">Apply for a founding brand place</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR CREATORS -->
+<div class="sec-banner"><span class="sec-banner-label">For creators</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Partnerships that fit. Pay that is fair.</span></div>
+<section class="audience-section" id="creators" style="background:var(--salmon-l);">
+  <div class="inner">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:stretch;">
+      <div style="border-radius:2px;overflow:hidden;min-height:500px;" class="reveal">
+        <img src="t_creators.jpg" alt="Travel storytelling" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+      </div>
+      <div class="reveal">
+        <div class="sec-eyebrow">For creators and storytellers</div>
+        <h2 class="sec-title">Partnerships that genuinely fit.</h2>
+        <h2 class="sec-title-2">Pay that is fair from the start.</h2>
+        <p class="sec-body" style="margin-bottom:2rem;">You do not need to be a travel creator. If your audience trusts your taste, Triptold finds you the right match.</p>
+
+        <div style="background:var(--white);border-radius:2px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;border-left:3px solid var(--salmon-d);">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--salmon-d);margin-bottom:0.8rem;">What every collaboration includes</div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>A guaranteed base fee paid on delivery, regardless of bookings</div>
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>Ongoing earnings as your content keeps driving bookings over time</div>
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>A brief built around your voice, not a marketing checklist</div>
+            <div style="font-size:0.9rem;color:var(--dark);display:flex;gap:0.6rem;"><span style="color:var(--green);font-weight:700;">&#10003;</span>All contracts, disclosure and payment handled by Triptold</div>
+          </div>
+        </div>
+
+        <div style="background:var(--dark);border-radius:2px;padding:1.5rem 1.8rem;margin-bottom:1.5rem;">
+          <div style="font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--salmon);margin-bottom:1rem;">Founding creators also get</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem 1.5rem;">
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Top-rate fee. You are taking a chance on something new.</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Your own editorial profile on the Triptold site</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Priority invitation on the Stories That Travel podcast</div>
+            <div style="font-size:0.85rem;color:#A0A8B0;display:flex;gap:0.5rem;"><span style="color:var(--salmon);">&#10003;</span>Extended earnings window on all bookings</div>
+          </div>
+        </div>
+
+        <a href="#interest" class="btn btn-dark" style="margin-bottom:0;">Apply to join the network</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALICE SPOTLIGHT -->
+<section style="background:var(--white);padding:0;" id="alice">
+  <div style="display:grid;grid-template-columns:1fr 1fr;min-height:520px;">
+    <div style="position:relative;overflow:hidden;">
+      <img src="t_alice.jpg" alt="Alice Marsh" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;min-height:520px;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,rgba(67,67,67,0.4) 100%);"></div>
+      <div style="position:absolute;bottom:1.5rem;left:1.5rem;background:var(--salmon);color:var(--dark);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.3rem 0.7rem;border-radius:2px;">Triptold Founding Creator</div>
+    </div>
+    <div style="background:var(--light);padding:4rem 3.5rem;display:flex;flex-direction:column;justify-content:center;" class="reveal">
+      <div class="sec-eyebrow" style="margin-bottom:1rem;">Founding creator spotlight</div>
+      <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1.5rem;color:var(--dark);margin-bottom:0.3rem;">Alice Marsh</div>
+      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:1.5rem;">Personal stylist, London &nbsp;·&nbsp; <a href="https://www.instagram.com/alice_inthe_looking_glass/" target="_blank" style="color:var(--salmon-d);text-decoration:none;">@alice_inthe_looking_glass</a></div>
+      <blockquote style="border-left:3px solid var(--salmon-d);padding:0.8rem 1.1rem;font-style:italic;font-size:0.95rem;color:var(--dark);line-height:1.7;background:var(--white);margin-bottom:1.2rem;">"Not: does Alice post about travel? But: what audience already trusts her taste enough to follow her somewhere new?"</blockquote>
+      <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem;">Alice's audience of women 40 to 55 follows her because she makes them feel visible and genuinely themselves again. They trust her taste completely. A girls weekend at a beautiful property: champagne on arrival, golden hour, slow mornings. That is exactly what she would choose. And exactly what her audience would book.</p>
+      <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+        <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:2px;">Style and confidence</span>
+        <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:2px;">Midlife women</span>
+        <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;padding:0.2rem 0.6rem;border-radius:2px;">Not an obvious travel creator</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR TRAVELLERS -->
+<div class="sec-banner"><span class="sec-banner-label">For travellers</span><span class="sec-banner-sep">·</span><span class="sec-banner-title">Discover places through people you trust</span></div>
+<section class="audience-section" id="travellers" style="background:var(--white);padding:0;">
+  <div style="position:relative;height:520px;overflow:hidden;">
+    <img src="t_travellers.jpg" alt="Family travel" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(67,67,67,0.82) 0%,rgba(67,67,67,0.4) 55%,transparent 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;padding:0 5vw;">
+      <div style="max-width:520px;" class="reveal">
+        <div class="sec-eyebrow" style="color:var(--salmon);margin-bottom:1rem;">For travellers</div>
+        <h2 style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--white);line-height:1.2;margin-bottom:0.3rem;">Discover places through people you already trust.</h2>
+          <h2 style="font-family:'Merriweather',serif;font-style:italic;font-weight:300;font-size:clamp(1.7rem,3.2vw,2.6rem);color:var(--salmon);line-height:1.2;margin-bottom:1.2rem;">Then book at a rate you will not find anywhere else.</h2>
+        <p style="font-size:1rem;color:rgba(255,255,255,0.85);line-height:1.75;margin-bottom:1rem;">No algorithms. No paid placements. Just genuine recommendations from creators whose taste you trust, with an exclusive rate when you book.</p>
+        <div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.8rem;">
+          <div style="font-size:0.9rem;color:rgba(255,255,255,0.9);display:flex;gap:0.6rem;"><span style="color:var(--salmon);font-weight:700;">&#10003;</span>Rates not available on Booking.com or Expedia</div>
+          <div style="font-size:0.9rem;color:rgba(255,255,255,0.9);display:flex;gap:0.6rem;"><span style="color:var(--salmon);font-weight:700;">&#10003;</span>The creator's own words included with every booking</div>
+          <div style="font-size:0.9rem;color:rgba(255,255,255,0.9);display:flex;gap:0.6rem;"><span style="color:var(--salmon);font-weight:700;">&#10003;</span>Every venue editorially matched, not paid to appear</div>
+        </div>
+        <a href="#interest" class="btn btn-primary">Join the early access list</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAVELLERS VALUE CARDS -->
+<section style="background:var(--light);padding:3.5rem 2rem;">
+  <div class="inner">
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="reveal">
+      <div style="background:var(--white);border-radius:2px;padding:1.8rem;border-top:3px solid var(--salmon);">
+        <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.7rem;">Recommendations you can trust</div>
+        <div style="font-size:0.87rem;color:var(--muted);line-height:1.7;">Every venue in the Triptold network has been genuinely matched to a creator whose audience trusts their taste. These are not sponsored placements. They are editorial decisions.</div>
+      </div>
+      <div style="background:var(--white);border-radius:2px;padding:1.8rem;border-top:3px solid var(--salmon);">
+        <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.7rem;">Exclusive rates, no booking fees</div>
+        <div style="font-size:0.87rem;color:var(--muted);line-height:1.7;">Triptold members access rates not available through OTAs or standard booking channels. No markup. No booking fees. Just a better price for booking directly through a creator you already trust.</div>
+      </div>
+      <div style="background:var(--white);border-radius:2px;padding:1.8rem;border-top:3px solid var(--salmon);">
+        <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1rem;color:var(--dark);margin-bottom:0.7rem;">Early access list open now</div>
+        <div style="font-size:0.87rem;color:var(--muted);line-height:1.7;">Triptold launches publicly in January 2027. Register your interest now and be among the first to access the full network of curated venues at founding member rates.</div>
+        <a href="#interest" class="btn btn-primary" style="margin-top:1.2rem;display:inline-block;font-size:0.75rem;padding:0.7rem 1.4rem;">Join the list</a>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="pool-break">
+  <div class="pool-break-overlay">
+    <div class="photo-break-quote">
+      The platform that gets better<br><em>every time a story is told.</em>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section style="background:var(--slate-l);padding:5.5rem 2rem;" id="team">
+  <div class="inner">
+    <div class="reveal" style="max-width:600px;">
+      <div class="sec-eyebrow">The founders</div>
+      <h2 class="sec-title">Built by people who already have the relationships to make this work.</h2>
+      <p class="sec-body">The Triptold thesis only holds if the founders have direct access to the right brands, the right creators, and the right communities. We do. This is not a platform being built in hope. It is a network being formalised around trust that already exists.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3rem;" class="reveal">
+      <div style="background:var(--white);border-radius:2px;padding:2rem;box-shadow:0 2px 16px rgba(67,67,67,0.07);display:grid;grid-template-columns:80px 1fr;gap:1.4rem;align-items:start;">
+        <img src="t_susie.jpg" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--salmon);" alt="Susie Cery">
+        <div>
+          <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1.15rem;color:var(--dark);margin-bottom:0.2rem;">Susie Cery</div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;">Commercial Relationships and Community</div>
+          <div style="font-size:0.87rem;color:var(--muted);line-height:1.65;">Founder of Our Tribe Travels and Family Home Swaps. 10 years building trusted communities in family travel and creating genuine creator partnerships. Direct access to boutique hotels, destination partners and 35,000 engaged parents globally across 58 countries.</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.8rem;">
+            <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;">35,000 community</span>
+            <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;">58 countries</span>
+            <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;">10 years family travel</span>
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--white);border-radius:2px;padding:2rem;box-shadow:0 2px 16px rgba(67,67,67,0.07);display:grid;grid-template-columns:80px 1fr;gap:1.4rem;align-items:start;">
+        <img src="t_kirsty.jpg" style="width:80px;height:80px;border-radius:50%;object-fit:cover;border:3px solid var(--salmon);" alt="Kirsty Stephenson">
+        <div>
+          <div style="font-family:'Merriweather',serif;font-style:italic;font-size:1.15rem;color:var(--dark);margin-bottom:0.2rem;">Kirsty Stephenson</div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;">Communications and Creative Lead</div>
+          <div style="font-size:0.87rem;color:var(--muted);line-height:1.65;">Brand strategist specialising in positioning, storytelling and audience growth. Leads Triptold's market positioning and editorial direction. Supported by Paul Tinsley (ex-Wunderman/WPP Creative Director) and Charlotte Foster (ex-BBC journalist) on content and podcast.</div>
+          <div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.8rem;">
+            <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;">Brand strategy</span>
+            <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;">Investor narrative</span>
+            <span style="background:var(--salmon-l);color:var(--salmon-d);font-size:0.72rem;font-weight:700;letter-spacing:0.06em;padding:0.2rem 0.6rem;border-radius:2px;">Editorial direction</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;border-radius:2px;overflow:hidden;position:relative;max-height:500px;" class="reveal">
+      <img src="t_founders.jpg" alt="Susie Cery and Kirsty Stephenson" style="width:100%;height:500px;object-fit:cover;object-position:center 45%;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(67,67,67,0.6) 0%,transparent 50%);"></div>
+      <div style="position:absolute;bottom:2rem;left:2rem;right:2rem;">
+        <div style="font-family:'Merriweather',serif;font-style:italic;font-size:clamp(1.1rem,2vw,1.5rem);color:var(--white);font-weight:300;line-height:1.4;">Susie and Kirsty have spent years building the trust that Triptold is built on.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="investment-bg" id="invest" style="padding:5.5rem 2rem;">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-eyebrow sec-eyebrow-light">For investors and introducers</div>
+      <h2 class="sec-title sec-title-white">Get in at the beginning.</h2>
+      <h2 class="sec-title-2" style="color:var(--salmon);">With SEIS tax relief and a founding position.</h2>
+      <p class="sec-body sec-body-light" style="max-width:620px;margin-top:0.5rem;">Triptold is a platform business built on a simple belief: the right storyteller changes everything. We combine editorial intelligence with technology to connect boutique travel brands with the creators their guests already trust. We are currently raising our seed round. HMRC Advance Assurance is secured.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;" class="reveal">
+      <div style="display:flex;flex-direction:column;gap:1.4rem;">
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">Already exists. Not a concept.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Platform live. Real community assets built over a decade. Seed funding into a working business.</div></div></div>
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">Platform economics, not agency economics.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Recurring membership revenue plus booking commissions. Compounds as the network grows.</div></div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1.4rem;">
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">A moat that can only be built by running it.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Every match and booking logged. That editorial intelligence cannot be replicated from scratch.</div></div></div>
+        <div style="display:flex;gap:1rem;"><div style="width:6px;height:6px;background:var(--salmon);border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div><div><div style="font-weight:700;font-size:0.9rem;color:var(--white);margin-bottom:0.2rem;">The timing is right.</div><div style="font-size:0.87rem;color:#A0A8B0;line-height:1.65;">Trust is the scarce resource in travel discovery. Triptold is built precisely for this moment.</div></div></div>
+      </div>
+    </div>
+    <div style="margin-top:2rem;" class="reveal">
+      <div style="background:rgba(46,112,96,0.15);border:1px solid rgba(46,112,96,0.3);border-radius:2px;padding:1rem 1.4rem;margin-bottom:1.5rem;display:inline-flex;align-items:center;gap:0.6rem;">
+        <span style="color:#7BC4A8;font-size:0.9rem;">&#10003;</span>
+        <span style="font-size:0.85rem;color:#A0A8B0;">SEIS eligible: HMRC Advance Assurance secured. 50% income tax relief for qualifying UK investors.</span>
+      </div><br>
+      <a href="#interest" class="btn btn-primary">Request the investor deck</a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div style="background:var(--dark);padding:2rem 0;overflow:hidden;">
+  <style>
+  .strip-track{display:flex;gap:4px;height:260px;animation:stripScroll 40s linear infinite;}
+  .strip-track:hover{animation-play-state:paused;}
+  @keyframes stripScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+  .strip-wrap{overflow:hidden;padding:0;}
+  </style>
+  <div class="strip-wrap">
+    <div class="strip-track">
+      <div style="flex:0 0 380px;overflow:hidden;border-radius:2px;"><img src="t_travellers.jpg" alt="Family travel" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;"></div>
+      <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;"><img src="t_verandah.jpg" alt="Verandah" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"></div>
+      <div style="flex:0 0 320px;overflow:hidden;border-radius:2px;"><img src="t_tuk.jpg" alt="Tuk-tuk" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div style="flex:0 0 300px;overflow:hidden;border-radius:2px;"><img src="t_room.jpg" alt="Boutique hotel" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;"><img src="t_pier.jpg" alt="By the sea" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;"></div>
+      <div style="flex:0 0 320px;overflow:hidden;border-radius:2px;"><img src="t_iceland.jpg" alt="Travel discovery" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;"><img src="t_creators.jpg" alt="Travel storytelling" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"></div>
+      <!-- duplicate for seamless loop -->
+      <div style="flex:0 0 380px;overflow:hidden;border-radius:2px;"><img src="t_travellers.jpg" alt="Family travel" style="width:100%;height:100%;object-fit:cover;object-position:center 45%;"></div>
+      <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;"><img src="t_verandah.jpg" alt="Verandah" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"></div>
+      <div style="flex:0 0 320px;overflow:hidden;border-radius:2px;"><img src="t_tuk.jpg" alt="Tuk-tuk" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;"></div>
+      <div style="flex:0 0 300px;overflow:hidden;border-radius:2px;"><img src="t_room.jpg" alt="Boutique hotel" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;"><img src="t_pier.jpg" alt="By the sea" style="width:100%;height:100%;object-fit:cover;object-position:center 70%;"></div>
+      <div style="flex:0 0 320px;overflow:hidden;border-radius:2px;"><img src="t_iceland.jpg" alt="Travel discovery" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div style="flex:0 0 260px;overflow:hidden;border-radius:2px;"><img src="t_creators.jpg" alt="Travel storytelling" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;"></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:1.2rem;font-size:0.7rem;color:#505860;letter-spacing:0.12em;text-transform:uppercase;">A trip well told is a journey somebody else wants to take</div>
+</div>
+
+<!-- SOCIAL -->
+<section class="social-section" id="social">
+  <div class="inner">
+    <div class="reveal">
+      <div class="sec-eyebrow sec-eyebrow-light">Follow the journey</div>
+      <h2 class="sec-title sec-title-white">Stories That Travel launches Autumn 2026.</h2>
+      <h2 class="sec-title-2" style="color:var(--salmon);">Follow us when we do.</h2>
+      <p class="sec-body sec-body-light" style="max-width:580px;">Our podcast, social channels and editorial content all go live alongside the pilot in Autumn 2026. Register your interest below and we will let you know the moment we are live.</p>
+    </div>
+    <div class="social-grid reveal">
+      <div class="social-card">
+        <div class="social-icon" style="background:rgba(225,48,108,0.15);">📷</div>
+        <div>
+          <div class="social-name">Instagram</div>
+          <div class="social-handle">@triptold</div>
+        </div>
+        <div class="social-desc">Behind the scenes of the pilot, creator spotlights, and the places that inspired the stories.</div>
+        <div class="social-coming"><div class="social-coming-dot"></div>Launching Autumn 2026</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon" style="background:rgba(246,201,182,0.15);">🎙</div>
+        <div>
+          <div class="social-name">Stories That Travel</div>
+          <div class="social-handle">The podcast</div>
+        </div>
+        <div class="social-desc">Conversations with founders, creators and hospitality teams about why certain stories resonate and how trust shapes travel decisions.</div>
+        <div class="social-coming"><div class="social-coming-dot"></div>Launching Autumn 2026</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon" style="background:rgba(255,110,0,0.12);">📝</div>
+        <div>
+          <div class="social-name">Substack</div>
+          <div class="social-handle">Stories That Travel</div>
+        </div>
+        <div class="social-desc">The editorial newsletter. Long reads on travel discovery, creator trust, and the stories worth telling.</div>
+        <div class="social-coming"><div class="social-coming-dot"></div>Launching Autumn 2026</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon" style="background:rgba(0,119,181,0.15);">💼</div>
+        <div>
+          <div class="social-name">LinkedIn</div>
+          <div class="social-handle">Triptold</div>
+        </div>
+        <div class="social-desc">Industry thinking on creator economics, boutique hospitality and the future of travel discovery.</div>
+        <div class="social-coming"><div class="social-coming-dot"></div>Launching Autumn 2026</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon" style="background:rgba(255,0,0,0.12);">▶</div>
+        <div>
+          <div class="social-name">YouTube</div>
+          <div class="social-handle">Stories That Travel</div>
+        </div>
+        <div class="social-desc">Video stories from our founding creators and the venues that inspired them.</div>
+        <div class="social-coming"><div class="social-coming-dot"></div>Launching Autumn 2026</div>
+      </div>
+      <div class="social-card">
+        <div class="social-icon" style="background:rgba(30,215,96,0.12);">🎵</div>
+        <div>
+          <div class="social-name">Spotify</div>
+          <div class="social-handle">Stories That Travel</div>
+        </div>
+        <div class="social-desc">The podcast, wherever you listen. New episodes follow each pilot collaboration.</div>
+        <div class="social-coming"><div class="social-coming-dot"></div>Launching Autumn 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="interest" style="padding:5.5rem 2rem;">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;">
+      <div class="sec-eyebrow" style="text-align:center;">Get involved</div>
+      <h2 class="sec-title" style="text-align:center;">Tell us who you are.</h2>
+      <h2 class="sec-title-2" style="text-align:center;">We will take it from there.</h2>
+      <p class="sec-body" style="text-align:center;margin:0 auto;max-width:520px;">Whether you are a brand, a creator, an investor, or a traveller who wants early access, we would love to hear from you. We read every submission personally and reply within two working days.</p>
+      <div class="share-nudge reveal" style="max-width:640px;margin:1.5rem auto 0;">
+        <div class="share-nudge-text"><strong>Not for you but know someone it is for?</strong>Share the link with a brand, creator or investor who should see this.</div>
+        <button class="share-btn" onclick="shareLink()">Copy link</button>
+      </div>
+    </div>
+
+    <div class="form-wrap reveal">
+      <div id="formContent">
+        <form action="https://formspree.io/f/hello" method="POST" onsubmit="submitForm(event)">
+          <div class="form-row">
+            <div class="fg"><label class="fl">First name</label><input class="fi" type="text" required placeholder="Your first name"></div>
+            <div class="fg"><label class="fl">Last name</label><input class="fi" type="text" required placeholder="Your last name"></div>
+          </div>
+          <div class="fg"><label class="fl">Email address</label><input class="fi" type="email" required placeholder="your@email.com"></div>
+
+          <div class="fg">
+            <label class="fl">I am a...</label>
+            <select class="fs" required id="whoSelect" onchange="updateFields()">
+              <option value="">Please select</option>
+              <option value="brand">Travel brand or hotel</option>
+              <option value="creator">Creator or storyteller</option>
+              <option value="investor">Investor or introducer</option>
+              <option value="traveller">Traveller interested in early access</option>
+              <option value="referral">I know someone who should see this</option>
+            </select>
+          </div>
+
+          <!-- BRAND -->
+          <div id="brandFields" class="form-hidden">
+            <div class="fg"><label class="fl">Property or brand name</label><input class="fi" type="text" placeholder="e.g. The Anchorage Hotel, Cornwall"></div>
+            <div class="fg"><label class="fl">Website</label><input class="fi" type="url" placeholder="https://"></div>
+            <div class="fg"><label class="fl">What makes your property different?</label><textarea class="fta" placeholder="Who is your ideal guest? What would feel wrong for your brand in a creator collaboration?"></textarea></div>
+          </div>
+
+          <!-- CREATOR -->
+          <div id="creatorFields" class="form-hidden">
+            <div class="form-row">
+              <div class="fg"><label class="fl">Instagram handle</label><input class="fi" type="text" placeholder="@yourhandle"></div>
+              <div class="fg"><label class="fl">Newsletter or blog URL</label><input class="fi" type="url" placeholder="https://"></div>
+            </div>
+            <div class="form-row">
+              <div class="fg">
+                <label class="fl">Approximate follower count</label>
+                <select class="fs">
+                  <option value="">Select range</option>
+                  <option>Under 5,000</option>
+                  <option>5,000 to 15,000</option>
+                  <option>15,000 to 50,000</option>
+                  <option>50,000 to 150,000</option>
+                  <option>Over 150,000</option>
+                </select>
+              </div>
+              <div class="fg">
+                <label class="fl">Approximate engagement rate</label>
+                <select class="fs">
+                  <option value="">Select range</option>
+                  <option>Under 2%</option>
+                  <option>2% to 5%</option>
+                  <option>5% to 10%</option>
+                  <option>Over 10%</option>
+                </select>
+              </div>
+            </div>
+            <div class="fg">
+              <label class="fl">Content type</label>
+              <select class="fs">
+                <option value="">What best describes your content?</option>
+                <option>Family travel</option>
+                <option>Food and place</option>
+                <option>Slow travel and lifestyle</option>
+                <option>Wellness and retreat</option>
+                <option>Adventure and outdoor</option>
+                <option>Design and interiors</option>
+                <option>General travel</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="fg"><label class="fl">Tell us about your audience</label><textarea class="fta" placeholder="Who follows you? What do they trust you on? What kinds of places would feel right for your brand?"></textarea></div>
+          </div>
+
+          <!-- INVESTOR -->
+          <div id="investorFields" class="form-hidden">
+            <div class="fg">
+              <label class="fl">How can we help?</label>
+              <select class="fs">
+                <option value="">Please select</option>
+                <option>I would like to receive the full investor deck</option>
+                <option>I would like to arrange a conversation</option>
+                <option>I know someone who might be interested</option>
+                <option>I would like to understand the SEIS benefits in more detail</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- REFERRAL -->
+          <div id="referralFields" class="form-hidden">
+            <div class="fg"><label class="fl">Who should we reach out to?</label><input class="fi" type="text" placeholder="Their name"></div>
+            <div class="fg"><label class="fl">Their email address</label><input class="fi" type="email" placeholder="their@email.com"></div>
+            <div class="fg">
+              <label class="fl">Why would they be interested?</label>
+              <select class="fs">
+                <option value="">They are a...</option>
+                <option>Travel brand or hotel</option>
+                <option>Creator or storyteller</option>
+                <option>Potential investor</option>
+                <option>Traveller who would love this</option>
+              </select>
+            </div>
+          </div>
+          <!-- TRAVELLER -->
+          <div id="travellerFields" class="form-hidden">
+            <div class="fg"><label class="fl">What kind of travel do you love?</label><input class="fi" type="text" placeholder="e.g. Family breaks in Europe, boutique hotels, adventure travel..."></div>
+          </div>
+
+          <div class="fg" style="margin-top:0.5rem;"><label class="fl">Anything else you would like us to know?</label><textarea class="fta" placeholder="Optional"></textarea></div>
+
+          <button type="submit" class="fsub">Send your details</button>
+          <p style="font-size:0.75rem;color:var(--muted);margin-top:0.8rem;text-align:center;">We read every submission personally and reply within two working days. We do not share your details with anyone.</p>
+        </form>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="fs-icon">&#9993;&#65039;</div>
+        <div class="fs-title">Thank you. We will be in touch.</div>
+        <div class="fs-body">We have received your details and will reply within two working days. If you would prefer to reach us directly, email <a href="mailto:hello@triptold.co" style="color:var(--salmon-d);">hello@triptold.co</a>.</div>
+        <div class="share-nudge" style="margin-top:1.5rem;text-align:left;">
+          <div class="share-nudge-text"><strong>Know someone else who should see this?</strong>Share the link with a brand, creator, or investor who might be interested.</div>
+          <button class="share-btn" id="shareBtn" onclick="shareLink()">Copy link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">
+      <img class="footer-logo" src="t_logo_white.png" alt="Triptold">
+      <div>
+        <div class="footer-wordmark">Triptold</div>
+        <div class="footer-tagline">A trip well told is a journey somebody else wants to take</div>
+      </div>
+    </div>
+    <div class="footer-tagline" style="margin-top:0.8rem;max-width:320px;">A curated matchmaking platform for boutique travel brands and trusted storytellers. Launching January 2027.</div>
+  </div>
+  <div class="footer-links">
+    <div style="margin-bottom:0.6rem;">
+      <a href="#brands">For brands</a> &nbsp;&#183;&nbsp;
+      <a href="#creators">For creators</a> &nbsp;&#183;&nbsp;
+      <a href="#travellers">For travellers</a> &nbsp;&#183;&nbsp;
+      <a href="#invest">Investors</a>
+    </div>
+    <div><a href="mailto:hello@triptold.co">hello@triptold.co</a></div>
+    <div style="margin-top:0.5rem;color:#505860;">&#169; 2026 Triptold &nbsp;&#183;&nbsp; triptold.co</div>
+  </div>
+</footer>
+
+<script>
+// NAV TOGGLE
+function toggleNav(){
+  const l=document.querySelector('.nav-links');
+  const open=l.getAttribute('data-open')==='1';
+  if(open){l.style.display='none';l.setAttribute('data-open','0');}
+  else{
+    l.style.cssText='display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(67,67,67,0.98);padding:1rem 2rem 1.5rem;gap:0.5rem;z-index:199;';
+    l.setAttribute('data-open','1');
+  }
+}
+document.querySelectorAll('.nav-links a').forEach(a=>{
+  a.addEventListener('click',()=>{
+    if(window.innerWidth<=900){
+      const l=document.querySelector('.nav-links');
+      l.style.display='none';l.setAttribute('data-open','0');
+    }
+  });
+});
+
+// SCROLL REVEAL
+const revealObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+// SECTION INDICATOR + BACK TO TOP + ACTIVE NAV
+const sections=['what','different','story','brands','creators','alice','travellers','team','invest','social','interest'];
+const indicator=document.getElementById('sectionIndicator');
+const backTop=document.getElementById('backTop');
+
+function updateScroll(){
+  const y=window.scrollY;
+  const heroH=document.querySelector('.hero').offsetHeight;
+
+  // Show/hide indicator and back to top
+  if(y>heroH*0.5){
+    indicator.classList.add('visible');
+    backTop.classList.add('visible');
+  } else {
+    indicator.classList.remove('visible');
+    backTop.classList.remove('visible');
+  }
+
+  // Active section dot
+  let current='';
+  sections.forEach(id=>{
+    const el=document.getElementById(id);
+    if(el){
+      const top=el.getBoundingClientRect().top;
+      if(top<=120) current=id;
+    }
+  });
+
+  document.querySelectorAll('.si-dot').forEach(dot=>{
+    dot.classList.toggle('active', dot.getAttribute('data-section')===current);
+  });
+
+  // Active nav link
+  document.querySelectorAll('.nav-links a[href^="#"]').forEach(a=>{
+    const id=a.getAttribute('href').replace('#','');
+    a.style.color=id===current?'var(--salmon)':'';
+  });
+}
+
+window.addEventListener('scroll', updateScroll, {passive:true});
+updateScroll();
+
+function scrollToSection(id){
+  const el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+// FORM
+function updateFields(){
+  const v=document.getElementById('whoSelect').value;
+  ['brandFields','creatorFields','investorFields','travellerFields','referralFields'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el) el.classList.add('form-hidden');
+  });
+  if(v){
+    const target=document.getElementById(v+'Fields');
+    if(target) target.classList.remove('form-hidden');
+  }
+}
+
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById('formContent').style.display='none';
+  document.getElementById('formSuccess').classList.add('show');
+}
+
+// SHARE
+function shareLink(){
+  const btn=document.getElementById('shareBtn');
+  const url=window.location.href.split('#')[0];
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(url).then(()=>{
+      btn.textContent='Copied!';
+      btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='Copy link';btn.classList.remove('copied');},2500);
+    });
+  }
+}
+</script>
+</body>
+</html>
